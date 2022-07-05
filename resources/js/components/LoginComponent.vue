@@ -36,7 +36,7 @@
                 </g>
               </g>
             </svg>
-            <h2 class="brand-text text-primary ml-1">Vuexy</h2>
+            <h2 class="brand-text text-primary ml-1">PeerNetwork</h2>
           </a>
           <h4 class="card-title mb-1">Welcome to Vuexy!</h4>
           <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
