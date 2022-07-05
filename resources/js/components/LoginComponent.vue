@@ -66,15 +66,17 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block" tabindex="4">Sign in</button>
           </form>
-
-          <div class="divider my-2">
-            <div class="divider-text">or</div>
-          </div>
+          <p class="text-center mt-2">
+                        <span>New on our Platform</span>
+                         <a  v-bind:href="'register'">
+                        <span>Create an Account</span>
+                         </a> 
+                    </p>
+                </div>
+            </div>
+            <!-- /Register v1 -->
         </div>
-      </div>
-      <!-- /Login v1 -->
     </div>
-  </div>
 </template>
 <script>
 export default {
@@ -97,7 +99,6 @@ export default {
           window.location.href = "/";
         })
         .catch((error) => {
-
          });
     },
   },
