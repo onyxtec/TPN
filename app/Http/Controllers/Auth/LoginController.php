@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Client\Request as ClientRequest;
@@ -63,6 +64,18 @@ class LoginController extends Controller
             return response()->json([
                 'data'=>$request,
             ]);
+        }
+    }
+    public function logout(Request $request) {
+        if(Auth::guard('client')->check()){
+            Session::flush();
+            Auth::guard('client')->user()->logout;
+            return redirect()->route('client/login');       
+         }  
+        else{
+            Auth::logout();
+            Session::flush();
+            return redirect('/');
         }
     }
 }
