@@ -39,7 +39,6 @@
             <h2 class="brand-text text-primary ml-1">PeerNetwork</h2>
           </a>
           <h4 class="card-title mb-1">Welcome to Client Login</h4>
-          <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
           <form class="auth-login-form mt-2" @submit.prevent="submit" method="POST" nonvalidate="nonvalidate">
             <div class="form-group">
               <label for="login-email" class="form-label">Email</label>
@@ -68,9 +67,9 @@
           </form>
           <p class="text-center mt-2">
                         <span>New on our Platform</span>
-                         <!-- <a  v-bind:href="'register'"> -->
+                         <a  v-bind:href="'register'">
                         <span>Create an Account</span>
-                         <!-- </a>  -->
+                         </a> 
                     </p>
                 </div>
             </div>
