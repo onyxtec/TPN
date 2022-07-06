@@ -124,9 +124,9 @@
 
                     <p class="text-center mt-2">
                         <span>Already have an account?</span>
-                       <!-- <a  v-bind:href="'login'"> -->
+                       <a  v-bind:href="'login'">
                         <span>Sign in instead</span>
-                        <!-- </a>  -->
+                        </a> 
                     </p>
                 </div>
             </div>
