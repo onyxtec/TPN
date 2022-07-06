@@ -43,34 +43,71 @@
                         <h2 class="brand-text text-primary ml-1">PeerNetwork</h2>
                     </a>
 
-                    <h4 class="card-title mb-1">Adventure starts here 🚀</h4>
-                    <p class="card-text mb-2">Make your app management easy and fun!</p>
+                    <h4 class="card-title mb-1">Sign Up as Client</h4>
+                    <!-- <p class="card-text mb-2">Make your app management easy and fun!</p> -->
 
                     <form class="auth-login-form mt-2" @submit.prevent="submit" method="POST" nonvalidate="nonvalidate">
                         <div class="form-group">
-                            <label for="register-username" class="form-label">Username</label>
-                            <input type="text" class="form-control" v-model="name" id="register-username" name="name"
-                                placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
+                            <label for="register-fullName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" v-model="fullName" id="register-fullName" name="fullName"
+                                 aria-describedby="register-fullName" tabindex="1" autofocus />
                         </div>
                         <div class="form-group">
                             <label for="register-email" class="form-label">Email</label>
                             <input type="text" class="form-control " id="register-email" name="email"
-                                placeholder="john@example.com" v-model="email" aria-describedby="register-email"
+                                v-model="email" aria-describedby="register-email"
                                 tabindex="2" />
                         </div>
 
                         <div class="form-group">
                             <label for="register-password" class="form-label">Password</label>
-
                             <div class="input-group input-group-merge form-password-toggle ">
                                 <input type="password" v-model="password" class="form-control form-control-merge "
                                     id="register-password" name="password"
-                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                     aria-describedby="register-password" tabindex="3" />
                                 <div class="input-group-append">
                                     <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                 </div>
                             </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="register-confirm-password" class="form-label">Confirm Password</label>
+                            <div class="input-group input-group-merge form-confirm-password-toggle ">
+                                <input type="password" v-model="confirm_password" class="form-control form-control-merge "
+                                    id="register-confirm-password" name="confirm-password"
+                                    aria-describedby="register-confirm-password" tabindex="3" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="register-contact-no" class="form-label">Contact No</label>
+                            <input type="tel" class="form-control " id="register-contact-no" name="contact-no"
+                                v-model="contact_no" aria-describedby="register-contact-no"
+                                tabindex="2" />
+                        </div>
+
+                            <div class="form-group">
+                            <label for="register-emergency-contact" class="form-label">Emergency Contact No</label>
+                            <input type="tel" class="form-control " id="register-emergency-contact" name="emergency-contact"
+                                v-model="emergency_contact" aria-describedby="register-emergency-contact"
+                                tabindex="2" />
+                        </div>
+
+                         <div class="form-group">
+                            <label for="register-dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control " id="register-dob" name="dob"
+                                v-model="dob" aria-describedby="register-dob"
+                                tabindex="2" />
+                        </div>
+
+                          <div class="form-group">
+                            <label for="register-address" class="form-label">Address</label>
+                            <input type="text" class="form-control " id="register-address" name="address"
+                                v-model="address" aria-describedby="register-address"
+                                tabindex="2" />
                         </div>
 
                         <div class="form-group">
@@ -87,9 +124,9 @@
 
                     <p class="text-center mt-2">
                         <span>Already have an account?</span>
-                       <a  v-bind:href="'login'">
+                       <!-- <a  v-bind:href="'login'"> -->
                         <span>Sign in instead</span>
-                        </a> 
+                        <!-- </a>  -->
                     </p>
                 </div>
             </div>
@@ -102,22 +139,31 @@ export default {
     data() {
         return {
 
-            name: '',
+            fullName: '',
             email: '',
             password: '',
+            confirm_password: '',
+            contact_no: '',
+            emergency_contact: '',
+            dob: '',
+            address: '',
         }
     },
     methods: {
         submit() {
-            axios.post('/register', {
-                name: this.name,
+            axios.post('/client/register', {
+                fullName: this.fullName,
                 email: this.email,
                 password: this.password,
+                confirm_password: this.confirm_password,
+                contact_no: this.contact_no,
+                emergency_contact: this.emergency_contact,
+                dob: this.dob,
+                address: this.address,
             })
                 .then((response) => {
                     this.credentials = response.data.data
-                    console.log(this.user)
-                    window.location.href = '/';
+                    window.location.href = '/client/login';
                 })
                 .catch(error => {
                 })
