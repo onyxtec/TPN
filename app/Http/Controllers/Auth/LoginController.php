@@ -72,6 +72,11 @@ class LoginController extends Controller
             Auth::guard('client')->user()->logout;
             return redirect()->route('client/login');       
          }  
+         elseif(Auth::guard('peer')->check()){
+            Session::flush();
+            Auth::guard('peer')->user()->logout;
+            return redirect()->route('peer/login');       
+         } 
         else{
             Auth::logout();
             Session::flush();
