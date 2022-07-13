@@ -20,11 +20,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    @extends('layouts/fullLayoutMaster')
-    @section('page-style')
-{{-- Page Css files --}}
-<link rel="stylesheet" href="{{ asset(mix('css/base/pages/page-auth.css')) }}">
-@endsection
     @section('main')
     <div id="app">
         <main class="py-4">
