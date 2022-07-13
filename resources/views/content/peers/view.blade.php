@@ -66,13 +66,6 @@
                                     </div>
                                     <div class="d-flex flex-wrap my-50">
                                         <div class="user-info-title">
-                                            <i data-feather="home" class="mr-1"></i>
-                                            <span class="card-text user-info-title font-weight-bold mb-0">Address</span>
-                                        </div>
-                                        <p class="card-text mb-0">{{ $peers['address'] }}</p>
-                                    </div>
-                                    <div class="d-flex flex-wrap my-50">
-                                        <div class="user-info-title">
                                             <i data-feather="check-square" class="mr-1"></i>
                                             <span
                                                 class="card-text user-info-title font-weight-bold mb-0">Specialization</span>
