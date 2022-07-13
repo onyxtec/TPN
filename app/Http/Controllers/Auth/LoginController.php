@@ -67,20 +67,9 @@ class LoginController extends Controller
         }
     }
     public function logout(Request $request) {
-        if(Auth::guard('client')->check()){
-            Session::flush();
-            Auth::guard('client')->user()->logout;
-            return redirect()->route('client/login');       
-         }  
-         elseif(Auth::guard('peer')->check()){
-            Session::flush();
-            Auth::guard('peer')->user()->logout;
-            return redirect()->route('peer/login');       
-         } 
-        else{
             Auth::logout();
             Session::flush();
             return redirect('/');
         }
     }
-}
+
