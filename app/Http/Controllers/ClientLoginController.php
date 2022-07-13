@@ -10,21 +10,25 @@ use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ClientLoginController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('layouts.ClientLogin');
     }
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $credentials = $request->only('email', 'password');
         if (Auth::guard('client')->attempt($credentials)) {
             return response()->json([
-                'data'=>$request,
+                'data' => $request,
             ]);
         }
     }
-    public function register(){
+    public function register()
+    {
         return view('layouts.ClientRegister');
     }
-    public function registration(Request $request){
+    public function registration(Request $request)
+    {
         $request->validate([
             'fullName' => 'required',
             'email' => 'required',
@@ -45,10 +49,11 @@ class ClientLoginController extends Controller
         $client->emergency_contact = $request->input('emergency_contact');
         $client->dob = $request->input('dob');
         $client->address = $request->input('address');
+        $client->problem_type = $request->input('problem_type');
+        $client->sub_type = $request->input('sub_type');
         $client->save();
         return response()->json([
-            'data'=>$client,
+            'data' => $client,
         ]);
-
     }
 }
