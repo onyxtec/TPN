@@ -66,7 +66,7 @@ export default {
         .then((response) => {
           this.credentials = response.data.data;
           console.log(this.credentials);
-          window.location.href = "/home";
+          window.location.href = "/peers";
         })
         .catch((error) => {
          });

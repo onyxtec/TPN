@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ClientLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeerLoginController;
+use App\Http\Controllers\PeerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,7 @@ Route::get('/', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('/login',[LoginController::class,'login'])->name('login/post');
 Route::get('register', [RegisterController::class,'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
-Route::get('home', [DashboardController::class, 'index'])->name('dashboard');
+// Route::get('home', [DashboardController::class, 'index'])->name('dashboard');
 
 // Route::group(['middleware' => 'auth'], function () {
     // Dashboard Routes
@@ -42,4 +43,5 @@ Route::get('peer/login', [PeerLoginController::class,'index'])->name('peer/login
 Route::post('peer/post-login',[PeerLoginController::class,'login'])->name('peerLogin.post');
 Route::get('peer/register', [PeerLoginController::class,'register'])->name('peer/register');
 Route::post('peer/register', [PeerLoginController::class, 'registration']);
+Route::resource('peers',PeerController::class);
 
