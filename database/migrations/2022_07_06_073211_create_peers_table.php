@@ -20,8 +20,7 @@ class CreatePeersTable extends Migration
             $table->string('password');
             $table->string('confirm_password');
             $table->string('contact_no');
-            $table->string('dob');
-            $table->string('address'); 
+            $table->string('dob'); 
             $table->string('specialization_type'); 
             $table->string('sub_type')->nullable(); 
             $table->timestamps();
