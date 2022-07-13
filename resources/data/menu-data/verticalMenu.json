@@ -1,31 +1,11 @@
 {
   "menu": [
     {
-      "url": "/",
-      "name": "Dashboard",
-      "icon": "home",
-      "slug": "dashboard.index"
-    },
-    {
+      "url": "/peers",
       "name": "Peers",
-      "badge": "2",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
-      "icon": "book",
-      "slug": "peers",
-      "submenu": [
-        {
-          "url": "peers/index",
-          "name": "List",
-          "icon": "circle",
-          "slug": "peers-index"
-        },
-        {
-          "url": "peers/create",
-          "name": "Add",
-          "icon": "circle",
-          "slug": "peers-create"
-        }
-      ]
+      "icon": "users",
+      "slug": "peers.index"
     }
 
   ]
