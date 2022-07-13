@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeerLoginController;
 use App\Http\Controllers\PeerController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,4 +45,6 @@ Route::post('peer/post-login',[PeerLoginController::class,'login'])->name('peerL
 Route::get('peer/register', [PeerLoginController::class,'register'])->name('peer/register');
 Route::post('peer/register', [PeerLoginController::class, 'registration']);
 Route::resource('peers',PeerController::class);
+Route::resource('clients',ClientController::class);
+
 

@@ -6,6 +6,13 @@
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "users",
       "slug": "peers.index"
+    },
+    {
+      "url": "/clients",
+      "name": "Clients",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "users",
+      "slug": "clients.index"
     }
 
   ]

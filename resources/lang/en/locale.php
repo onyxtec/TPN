@@ -6,6 +6,7 @@ return [
   "Starter Kit"=>"Starter Kit",
   "Dashboards" => "Dashboards",
   "Peers" => "Peers",
+  "Clients" => "Clients",
   "Analytics" => "Analytics",
   "eCommerce" => "eCommerce",
   "Apps" => "Apps",
