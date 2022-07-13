@@ -31,7 +31,6 @@ class PeerLoginController extends Controller
         'confirm_password' => 'required_with:password|same:password',
         'contact_no' => 'required',
         'dob' => 'required',
-        'address' => 'required',
     ]);
     $peer = new Peer();
     $peer->fullName = $request->input('fullName');
@@ -40,7 +39,6 @@ class PeerLoginController extends Controller
     $peer->confirm_password = Hash::make($request->input('confirm_password'));
     $peer->contact_no = $request->input('contact_no');
     $peer->dob = $request->input('dob');
-    $peer->address = $request->input('address');
     $peer->specialization_type = $request->input('specialization_type');
     $peer->sub_type = $request->input('sub_type');
     $peer->save();

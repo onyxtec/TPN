@@ -18,7 +18,6 @@ class Peer extends Authenticatable
         'confirm_password',
         'contact_no' ,
         'dob',
-        'address',
         'specialization_type',
         'sub_type',
     ];

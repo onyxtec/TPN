@@ -23,6 +23,8 @@ class CreateClientsTable extends Migration
             $table->string('emergency_contact');
             $table->string('dob');
             $table->string('address');
+            $table->string('problem_type'); 
+            $table->string('sub_type')->nullable(); 
 
             $table->timestamps();
         });
