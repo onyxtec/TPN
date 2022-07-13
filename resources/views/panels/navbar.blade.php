@@ -29,7 +29,7 @@
               </g>
             </svg>
           </span>
-          <h2 class="brand-text mb-0">Vuexy</h2>
+          <h2 class="brand-text mb-0">PeerNetwork</h2>
         </a>
       </li>
     </ul>
@@ -54,11 +54,11 @@
         <li class="nav-item dropdown dropdown-user">
           <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="user-nav d-sm-flex d-none">
-              <span class="user-name font-weight-bolder">John Doe</span>
+              <span class="user-name font-weight-bolder"></span>
               <span class="user-status">Admin</span>
             </div>
             <span class="avatar">
-              <img class="round" src="{{asset('images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40">
+              <img class="round" src="{{ asset('/images/avatars/user.png') }}" alt="jj" height="40" width="40">
               <span class="avatar-status-online"></span>
             </span>
           </a>

@@ -5,6 +5,7 @@ return [
   "Dashboard"=>"Dashboard",
   "Starter Kit"=>"Starter Kit",
   "Dashboards" => "Dashboards",
+  "Peers" => "Peers",
   "Analytics" => "Analytics",
   "eCommerce" => "eCommerce",
   "Apps" => "Apps",
