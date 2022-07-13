@@ -16,12 +16,14 @@
         {
           "url": "peers/index",
           "name": "List",
-          "icon": "circle"
+          "icon": "circle",
+          "slug": "peers-index"
         },
         {
           "url": "peers/create",
           "name": "Add",
-          "icon": "circle"
+          "icon": "circle",
+          "slug": "peers-create"
         }
       ]
     }
