@@ -79,25 +79,20 @@
                                         </div>
                                         <p class="card-text mb-0">{{ $client['address'] }}</p>
                                     </div>
-                                    {{-- <div class="d-flex flex-wrap my-50">
+                                    <div class="d-flex flex-wrap my-50">
                                         <div class="user-info-title">
                                             <i data-feather="check-square" class="mr-1"></i>
                                             <span
-                                                class="card-text user-info-title font-weight-bold mb-0">Specialization</span>
+                                                class="card-text user-info-title font-weight-bold mb-0">Problem</span>
                                         </div>
                                         <p class="card-text mb-0">
-                                            @if ($peers['specialization_type'] == 'Both')
-                                                <ul style="padding-left: 6px">
-                                                    <li> MentalHealth</li>
-                                                    <li>{{ $peers['sub_type'] }}</li>
-                                                </ul>
-                                            @elseif($peers['specialization_type'] == 'Substance Use Disorder')
-                                                {{ $peers['sub_type'] }}
+                                            @if ($client['problem_type'] == 'Substance Use Disorder')
+                                                {{ $client['sub_type'] }}
                                             @else
-                                                {{ $peers['specialization_type'] }}
+                                                {{ $client['problem_type'] }}
                                             @endif
                                         </p>
-                                    </div> --}}
+                                    </div>
 
 
 
