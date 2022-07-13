@@ -19,6 +19,8 @@ class Client extends Authenticatable
         'contact_no' ,
         'emergency_contact',
         'dob',
-        'address'
+        'address',
+        'problem_type',
+        'sub_type',
     ];
 }
