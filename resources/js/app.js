@@ -21,7 +21,6 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('login-component', require('./components/LoginComponent.vue').default);
-Vue.component('register-component', require('./components/RegisterComponent.vue').default);
 Vue.component('client-login-component', require('./components/ClientLoginComponent.vue').default);
 Vue.component('client-register-component', require('./components/ClientRegisterComponent.vue').default);
 Vue.component('peer-register-component', require('./components/PeerRegisterComponent.vue').default);

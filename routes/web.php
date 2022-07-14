@@ -21,30 +21,27 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Auth routes
-// Route::get('/login', [LoginController::class,'showLoginForm'])->name('login');
-// Route::post('post/login',[LoginController::class,'login'])->name('login.post');
-Route::get('/', [LoginController::class,'showLoginForm'])->name('login');
-Route::post('/login',[LoginController::class,'login'])->name('login/post');
-Route::get('register', [RegisterController::class,'showRegistrationForm'])->name('register');
-Route::post('register', [RegisterController::class, 'register']);
-// Route::get('home', [DashboardController::class, 'index'])->name('dashboard');
+// Admin Login
+Route::get('admin/login', [LoginController::class, 'showLoginForm'])->name('admin/login');
+Route::post('/login', [LoginController::class, 'login'])->name('login/post');
 
-// Route::group(['middleware' => 'auth'], function () {
-    // Dashboard Routes
-    Route::post('/logout',[LoginController::class,'logout'])->name('logout');
-    // Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-// });
-Route::get('client/login', [ClientLoginController::class,'index'])->name('client/login');
-Route::post('client/post-login',[ClientLoginController::class,'login'])->name('clientLogin.post');
-Route::get('client/register', [ClientLoginController::class,'register'])->name('client/register');
+
+
+// Dashboard Routes
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('peers', PeerController::class);
+    Route::resource('clients', ClientController::class);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
+
+Route::get('client/login', [ClientLoginController::class, 'index'])->name('client/login');
+Route::post('client/post-login', [ClientLoginController::class, 'login'])->name('clientLogin.post');
+Route::get('client/register', [ClientLoginController::class, 'register'])->name('client/register');
 Route::post('client/register', [ClientLoginController::class, 'registration']);
 
-Route::get('peer/login', [PeerLoginController::class,'index'])->name('peer/login');
-Route::post('peer/post-login',[PeerLoginController::class,'login'])->name('peerLogin.post');
-Route::get('peer/register', [PeerLoginController::class,'register'])->name('peer/register');
+Route::get('peer/login', [PeerLoginController::class, 'index'])->name('peer/login');
+Route::post('peer/post-login', [PeerLoginController::class, 'login'])->name('peerLogin.post');
+Route::get('peer/register', [PeerLoginController::class, 'register'])->name('peer/register');
 Route::post('peer/register', [PeerLoginController::class, 'registration']);
-Route::resource('peers',PeerController::class);
-Route::resource('clients',ClientController::class);
-
-

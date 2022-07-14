@@ -24,7 +24,7 @@
                 <input type="password" class="form-control form-control-merge" id="login-password" name="password"
                   tabindex="2" v-model="password" aria-describedby="login-password" />
                 <div class="input-group-append">
-                  <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                  <!-- <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span> -->
                 </div>
               </div>
             </div>
@@ -36,12 +36,6 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block" tabindex="4">Sign in</button>
           </form>
-          <p class="text-center mt-2">
-                        <span>New on our Platform</span>
-                         <a  v-bind:href="'register'">
-                        <span>Create an Account</span>
-                         </a> 
-                    </p>
                 </div>
             </div>
             <!-- /Register v1 -->
@@ -65,10 +59,10 @@ export default {
         })
         .then((response) => {
           this.credentials = response.data.data;
-          console.log(this.credentials);
-          window.location.href = "/peers";
+            window.location.href = '/dashboard'
         })
         .catch((error) => {
+          console.log(error);
          });
     },
   },
