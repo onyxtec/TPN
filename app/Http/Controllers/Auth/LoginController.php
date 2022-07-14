@@ -58,18 +58,28 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {   
+    {
         $credentials = $request->only('email', 'password');
         if (Auth::guard()->attempt($credentials)) {
             return response()->json([
-                'data'=>$request,
+                'data' => $request,
             ]);
         }
     }
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
+        if (Auth::guard('client')->check()) {
+            Session::flush();
+            Auth::guard('client')->user()->logout;
+            return redirect()->route('client/login');
+        } elseif (Auth::guard('peer')->check()) {
+            Session::flush();
+            Auth::guard('peer')->user()->logout;
+            return redirect()->route('peer/login');
+        } else{
             Auth::logout();
             Session::flush();
-            return redirect('/');
+            return redirect('admin/login');
         }
     }
-
+}
