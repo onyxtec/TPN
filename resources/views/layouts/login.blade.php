@@ -9,3 +9,9 @@
 
 </login-component>
 @endsection
+
+<style>
+    .app-content {
+        display: none;
+    }
+    </style>
