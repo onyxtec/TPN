@@ -59,12 +59,23 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request->all());
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
         $credentials = $request->only('email', 'password');
         if (Auth::guard()->attempt($credentials)) {
             return response()->json([
                 'data' => $request,
             ]);
         }
+        return response()->json([
+            'message' => "You Have Invalid Credentials",
+            'status' => 400,
+            'data' => '',
+        ],400, []);
+               
     }
     public function logout(Request $request)
     {

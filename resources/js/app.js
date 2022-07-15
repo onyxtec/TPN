@@ -8,6 +8,12 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+
+import { ValidationProvider } from 'vee-validate';
+import { ValidationObserver, localize } from 'vee-validate';
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
