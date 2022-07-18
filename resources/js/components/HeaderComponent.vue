@@ -25,7 +25,7 @@
       </nav>
 
       <div class="d-flex mr-3">
-        <a class="nav-item nav-link" href="#">Sign In</a>
+        <a class="nav-item nav-link" v-bind:href="'peer/login'">Sign In</a>
         <button class="book-now">Book Now</button>
       </div>
     </div>
