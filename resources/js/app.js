@@ -27,10 +27,10 @@ Vue.component('ValidationObserver', ValidationObserver);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('login-component', require('./components/LoginComponent.vue').default);
-Vue.component('client-login-component', require('./components/ClientLoginComponent.vue').default);
-Vue.component('client-register-component', require('./components/ClientRegisterComponent.vue').default);
-Vue.component('peer-register-component', require('./components/PeerRegisterComponent.vue').default);
-Vue.component('peer-login-component', require('./components/PeerLoginComponent.vue').default);
+Vue.component('client-login-component', require('./components/ClientLogin/ClientLoginComponent.vue').default);
+Vue.component('client-register-component', require('./components/ClientLogin/ClientRegisterComponent.vue').default);
+Vue.component('peer-register-component', require('./components/PeerLogin/PeerRegisterComponent.vue').default);
+Vue.component('peer-login-component', require('./components/PeerLogin/PeerLoginComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
