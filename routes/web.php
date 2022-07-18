@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeerLoginController;
 use App\Http\Controllers\PeerController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-
+Route::get('/',[HomeController::class,'index']);
 Route::get('client/login', [ClientLoginController::class, 'index'])->name('client/login');
 Route::post('client/post-login', [ClientLoginController::class, 'login'])->name('clientLogin.post');
 Route::get('client/register', [ClientLoginController::class, 'register'])->name('client/register');
