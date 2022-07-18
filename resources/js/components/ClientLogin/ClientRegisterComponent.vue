@@ -1,184 +1,179 @@
 <template>
-    <section class="vh-100">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-lg-12 col-xl-11">
-                    <div class="card text-black" style="border-radius: 25px">
-                        <div class="card-body p-md-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                                        <b>Client Registration</b>
-                                    </p>
-                                    <form class="mx-1 mx-md-4" @submit.prevent="submit" method="POST"
-                                        nonvalidate="nonvalidate">
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example3c" name="fullName"
-                                                    class="form-control" v-model="fullName" />
-                                                <label class="form-label" for="form3Example3c">Enter Full Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="form3Example3c" name="email"
-                                                    class="form-control" v-model="email" />
-                                                <label class="form-label" for="form3Example3c">Enter Email
-                                                    Address</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="password" id="form3Example4c"
-                                                    class="form-control" v-model="password" />
-                                                <label class="form-label" for="form3Example4c">Password</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="password" name="confirm_password" id="form3Example4c"
-                                                    class="form-control" v-model="confirm_password" />
-                                                <label class="form-label" for="form3Example4c">Confirm Password</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="no" id="form3Example3c" name="contact_no"
-                                                    class="form-control" v-model="contact_no" />
-                                                <label class="form-label" for="form3Example3c">Enter Contact No</label>
-                                            </div>
-                                        </div>
-                                          <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="no" id="form3Example3c" name="emergency_contact"
-                                                    class="form-control" v-model="emergency_contact" />
-                                                <label class="form-label" for="form3Example3c">Enter Emergency Contact No</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="date" id="form3Example3c" name="dob" class="form-control"
-                                                    v-model="dob" />
-                                                <label class="form-label" for="form3Example3c">Enter Date of
-                                                    Birth</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example3c" name="address" class="form-control"
-                                                    v-model="address" />
-                                                <label class="form-label" for="form3Example3c">Enter Address</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <select class="form-control" v-model="problem_type"
-                                                    id="register-problem_type" name="problem_type">
-                                                    <option disabled selected>Select Your Problem</option>
-                                                    <option>Mental Health</option>
-                                                    <option>Substance Use Disorder</option>
-                                                </select>
-                                                <label class="form-label" for="form3Example4c">Presenting Problem</label>
-                                            </div>
-                                        </div>
-                                        <div v-if="problem_type == 'Substance Use Disorder'"
-                                            class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <select class="form-control" v-model="sub_type"
-                                                    id="problem_type" name="problem_type">
-                                                    <option disabled selected>Select Option</option>
-                                                    <option>Methamphetamine</option>
-                                                    <option>Cocaine</option>
-                                                    <option>Opiates</option>
-                                                    <option>Marijuana</option>
-                                                    <option>Alcohol</option>
-                                                    <option>Benzodiazepines</option>
-                                                    <option>Heroin</option>
-                                                    <option>Fentanyl</option>
-                                                    <option>Other</option>
-                                                </select>
-                                                <label class="form-label" for="form3Example4c">Substance Use
-                                                    Disorder</label>
-                                            </div>
-                                        </div>
-                                        <div v-if="sub_type == 'Other'" class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" class="form-control " id="register-other"
-                                                    name="other" v-model="otherValue" aria-describedby="register-other"
-                                                    tabindex="2" />
-                                                <label class="form-label" for="form3Example3c">Other Disorder</label>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg">
-                                                Register
-                                            </button>
-                                        </div>
-                                        <a v-bind:href="'login'"
-                                            class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">Already Have an
-                                            Account? SignIn</a>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-lg-5" style="background: #FAF6FE" >
+        <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
+        <div class="d-flex">
+          <img class="img-fluid pl-3" src="/images/login/image.png" alt="flower" style="height: 95vh;">
+          <div class="d-flex align-items-center" style="font-size: 35px; margin-top: -215px; margin-left: -220px;">
+            <span>Your shelter <br> From All <br><span style="color: #8453A5;">Mental</span>
+              Health<br>Issues</span>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="col-lg-7">
+        <div class="d-flex justify-content-end mx-5 mt-5">
+          <p>Already Have an
+            Account?</p> <a class="ml-2" v-bind:href="'login'"><span style="color:#A136C5">SignIn Instead</span> </a>
+        </div>
+        <div class="col-lg-6 offset-lg-3 mt-5">
+          <h3 class="d-flex justify-content-center">Welcome!</h3>
+          <p class="m-0">There is no one who loves pain itself, who seeks after it and wants to have it.</p>
+        </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+          <button class="px-3 py-3 ml-3 rounded" style="border-color: #8453A5; border-radius: 25px; width: 220px;">I'm a
+            Peer</button>
+          <button class="px-3 py-3 rounded"
+            style="border-color: #8453A5; border-radius: 25px; width: 220px; background-color: #8453A5; color: #FAF6FE;">I'm
+            a Client</button>
+        </div>
+         <ValidationObserver v-slot="{ handleSubmit }">
+        <form  @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate">
+          <div class="col-lg-6 offset-lg-3 mt-5">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="fullName">Full Name</label>
+            </div>
+            <div class="col-lg-10">
+          <ValidationProvider name="fullName" rules="required" v-slot="{ errors }">
+              <input v-model="fullName" class="form-control input-size" type="text"
+                placeholder="Enter your Full Name" />
+                <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                          </ValidationProvider>
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="email">Email address</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="email" type="email" class="form-control input-size" placeholder="Enter email" />
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="password">Password</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="password" type="password" class="form-control input-size" placeholder="Enter Password" />
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="confirm_password">Confirm Password</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="confirm_password" type="password" class="form-control input-size"
+                placeholder="Confirm Password" />
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="contact_no">Contact No</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="contact_no" type="tel" class="form-control input-size" placeholder="Contact no" />
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="emergency_contact">Emergency Contact</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="emergency_contact" type="tel" class="form-control input-size" placeholder="Emergency Contact" />
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="dob">Date of Birth</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="dob" type="date" class="form-control input-size" placeholder="Date of Birth" />
+            </div>
+          </div>
+            <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="address">Address</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="address" type="text" class="form-control input-size" placeholder="Address" />
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="problem_type">Problem Type</label>
+            </div>
+            <div class="col-lg-10">
+              <select type="text" class="form-control" style=" height:50px;" v-model="problem_type">
+                <option disabled selected>Select Your Problem</option>
+                <option>Mental Health</option>
+                <option>Substance Use Disorder</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4"
+            v-if="problem_type == 'Substance Use Disorder'">
+            <div class="col-lg-12 text-left">
+              <label class="m-0 font-label" for="mental_type">Substance Use Disorder</label>
+            </div>
+            <div class="col-lg-10">
+              <select type="text" class="form-control" style=" height:50px;" v-model="sub_type">
+                <option disabled selected>Select Your Substance Disorder</option>
+                <option>Cocaine</option>
+                <option>Opiates</option>
+                <option>Marijuana</option>
+                <option>Alcohol</option>
+                <option>Benzodiazepines</option>
+                <option>Heroin</option>
+                <option>Fentanyl</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 mt-4 my-1">
+            <button class="rounded button">Sign Up</button>
+          </div>
+        </form>
+        </ValidationObserver>
+      </div>
+    </div>
+  </div>
 </template>
-  <script>
-  export default {
-      data() {
-          return {
-  
-              fullName: '',
-              email: '',
-              password: '',
-              confirm_password: '',
-              contact_no: '',
-              dob: '',
-              address: '',
-              emergency_contact: '',
-              problem_type: '',
-              sub_type: '',
-              otherValue: '',
-          }
-      },
-      methods: {
-          submit() {
-              axios.post('/client/register', {
-                  fullName: this.fullName,
-                  email: this.email,
-                  password: this.password,
-                  confirm_password: this.confirm_password,
-                  contact_no: this.contact_no,
-                  emergency_contact: this.emergency_contact,
-                  dob: this.dob,
-                  address: this.address,
-                  problem_type: this.problem_type,
-                  sub_type: this.sub_type === 'Other' ? this.otherValue : this.sub_type,
-              })
-                  .then((response) => {
-                      this.credentials = response.data.data
-                      window.location.href = '/client/login';
-                  })
-                  .catch(error => {
-                  })
-          }
-      }
-  
+<script>
+export default {
+  data() {
+    return {
+
+      fullName: '',
+      email: '',
+      password: '',
+      confirm_password: '',
+      contact_no: '',
+      emergency_contact: '',
+      dob: '',
+      address: '',
+      problem_type: '',
+      sub_type: '',
+    }
+  },
+  methods: {
+    submit() {
+      axios.post('/peer/register', {
+        fullName: this.fullName,
+        email: this.email,
+        password: this.password,
+        confirm_password: this.confirm_password,
+        contact_no: this.contact_no,
+        dob: this.dob,
+        address: this.address,
+        specialization_type: this.specialization_type,
+        sub_type: this.sub_type === 'Other' ? this.otherValue : this.sub_type,
+      })
+        .then((response) => {
+          this.credentials = response.data.data
+          window.location.href = '/peer/login';
+        })
+        .catch(error => {
+        })
+    }
   }
-  </script>
+}
+</script>

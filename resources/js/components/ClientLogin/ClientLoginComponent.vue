@@ -1,48 +1,61 @@
 <template>
-  <section class="vh-100" >
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-          <div class="card text-black" style="border-radius: 25px">
-            <div class="card-body p-md-5">
-              <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                   <b>Client Login</b> 
-                  </p>
-                  <form class="mx-1 mx-md-4" @submit.prevent="submit" method="POST" nonvalidate="nonvalidate">
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input type="email" id="form3Example3c" name="email" class="form-control" v-model="email" />
-                        <label class="form-label" for="form3Example3c">Enter Email Address</label>
-                      </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input type="password" name="password" id="form3Example4c" class="form-control"
-                          v-model="password" />
-                        <label class="form-label" for="form3Example4c">Password</label>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" class="btn btn-primary btn-lg">
-                        Login
-                      </button>
-                    </div>
-                    <a v-bind:href="'register'" class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">Don't have an
-                      account? Sign up</a>
-                  </form>
-                </div>
-
-              </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-lg-5" style="background: #FAF6FE">
+        <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
+        <div class="d-flex">
+          <img class="img-fluid pl-3" src="/images/login/image.png" alt="flower" style="height: 95vh;">
+          <div class="d-flex align-items-center" style="font-size: 35px; margin-top: -215px; margin-left: -220px;">
+            <span>Your shelter <br> From All <br><span style="color: #8453A5;">Mental</span>
+              Health<br>Issues</span>
           </div>
         </div>
       </div>
+      <div class="col-lg-7">
+        <div class="d-flex justify-content-end mx-5 mt-5">
+          <p>New on our platform?</p> <a class="ml-2" v-bind:href="'register'"><span style="color:#A136C5">Create an
+              account</span> </a>
+        </div>
+        <div class="col-lg-6 offset-lg-3 mt-5">
+          <h3 class="d-flex justify-content-center">Welcome Back!</h3>
+        </div>
+        <div class="col-lg-6 offset-lg-3 mt-4">
+          <button class="px-3 py-3 ml-3 rounded" style="border-color: #8453A5; border-radius: 25px; width: 220px;">I'm a
+            Peer</button>
+          <button class="px-3 py-3 rounded"
+            style="border-color: #8453A5; border-radius: 25px; width: 220px; background-color: #8453A5; color: #FAF6FE;">I'm
+            a Client</button>
+        </div>
+        <form @submit.prevent="submit" method="POST" nonvalidate="nonvalidate" class="mt-5">
+          <div class="col-lg-6 mx-5 mt-5">
+            <div class="col-lg-12 text-left">
+              <label class="mt-5 font-label label-box" for="Email">Email</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="email" class="form-control login-input" type="email"
+                placeholder="Enter your Email Address" />
+            </div>
+          </div>
+          <div class="col-lg-6 mx-5">
+            <div class="col-lg-12 text-left">
+              <label class=" font-label label-box" for="password">Password</label>
+            </div>
+            <div class="col-lg-10">
+              <input v-model="password" class="form-control login-input" type="password"
+                placeholder="Enter your Password" />
+            </div>
+          </div>
+          <div class="custom-control custom-checkbox checkbox mt-3">
+            <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
+            <label class="custom-control-label" for="remember-me"> Remember Me </label>
+          </div>
+          <div class="col-lg-6 mt-4 my-1">
+            <button class="rounded button-login">Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </section>
+  </div>
 </template>
 <script>
 export default {
@@ -62,7 +75,7 @@ export default {
         .then((response) => {
           this.credentials = response.data.data;
           console.log(this.credentials);
-          window.location.href = "/a";
+          window.location.href = "/";
         })
         .catch((error) => {
         });

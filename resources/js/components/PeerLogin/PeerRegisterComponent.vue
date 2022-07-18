@@ -173,20 +173,3 @@ export default {
   }
 }
 </script>
-<style>
-.font-label {
-  font-size: 13px;
-}
-
-.input-size {
-  height: 50px;
-}
-
-.button {
-  width: 80%;
-  margin-left: 10px;
-  background-color: #491859;
-  height: 50px;
-  color: white;
-}
-</style>
