@@ -1,16 +1,16 @@
 <template>
   <div class="auth-wrapper auth-v1 px-2">
-
     <div class="auth-inner py-2">
       <!-- Login v1 -->
       <div class="card mb-0">
         <div class="card-body">
-          <a href="javascript:void(0);" class="brand-logo">
-            <img max-width="200px" height="80" src="/images/logo/logo.png" class="attachment-full size-full" alt=""
-              loading="lazy" sizes="(max-width: 380px) 100vw, 380px">
-          </a>
+            <a href="javascript:void(0);" class="brand-logo">
+                        <img max-width="200px" height="80"
+                            src="/images/logo/logo.png"
+                            class="attachment-full size-full" alt="" loading="lazy"
+                            sizes="(max-width: 380px) 100vw, 380px">
+                    </a>
           <form class="auth-login-form mt-2" @submit.prevent="submit" method="POST" nonvalidate="nonvalidate">
-              <span style="color: red">{{ error }}</span>
             <div class="form-group">
               <label for="login-email" class="form-label">Email</label>
               <input type="text" class="form-control" id="login-email" name="email" placeholder="john@example.com"
@@ -36,11 +36,11 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block" tabindex="4">Sign in</button>
           </form>
+                </div>
+            </div>
+            <!-- /Register v1 -->
         </div>
-      </div>
-      <!-- /Register v1 -->
     </div>
-  </div>
 </template>
 <script>
 export default {
@@ -48,7 +48,6 @@ export default {
     return {
       email: "",
       password: "",
-      error: "",
     };
   },
   methods: {
@@ -60,12 +59,11 @@ export default {
         })
         .then((response) => {
           this.credentials = response.data.data;
-          window.location.href = '/dashboard'
+            window.location.href = '/dashboard'
         })
         .catch(error => {
-          this.error = error.response.data.message;
-          console.log(error.response)
-        });
+                   console.log("abcd", error.response)
+                });
     },
   },
 };
