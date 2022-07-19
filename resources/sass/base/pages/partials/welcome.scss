@@ -1,39 +1,56 @@
 .font-label {
-    font-size: 13px;
-  }
-  
-  .input-size {
-    height: 50px;
-  }
-  
-  .button {
+  font-size: 13px;
+}
+
+.input-size {
+  height: 50px;
+}
+
+.button {
+ border-style: solid;
+ border-color: #8453a5;
+  border-radius: 25px;
+  width: 220px;
+//   background-color: #8453a5;
+  color: black;
+}
+.button {
+    border-style: solid;
+    border-color: #8453a5;
+     border-radius: 25px;
+     width: 220px;
+   //   background-color: #8453a5;
+     color: black;
+   }
+.font-label {
+  font-size: 13px;
+}
+
+.label-box {
+  margin-left: 126px;
+}
+
+.login-input {
+  height: 40px;
+  width: 600px;
+  margin-left: 126px;
+}
+
+.button-login {
+  width: 605px;
+  background-color: #8453a5;
+  margin-left: 184px;
+  height: 40px;
+  color: white;
+}
+.checkbox {
+  margin-left: 200px;
+}
+.btn-register{
     width: 80%;
     margin-left: 10px;
     background-color: #491859;
     height: 50px;
     color: white;
-  }
-  .font-label {
-    font-size: 13px;
-  }
-  
-  .label-box {
-    margin-left: 126px;
-  }
-  
-  .login-input {
-    height: 40px;
-    width: 600px;
-    margin-left: 126px;
-  }
-  
-  .button-login {
-    width: 605px;
-    background-color:#8453A5;
-    margin-left: 184px;
-    height: 40px;
-    color: white;
-  }
-  .checkbox{
-    margin-left: 200px;
-  }
+}
+

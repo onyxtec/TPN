@@ -9,6 +9,7 @@ use App\Http\Controllers\PeerController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginRegisterController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,12 +38,12 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/',[HomeController::class,'index']);
-Route::get('client/login', [ClientLoginController::class, 'index'])->name('client/login');
-Route::post('client/post-login', [ClientLoginController::class, 'login'])->name('clientLogin.post');
-Route::get('client/register', [ClientLoginController::class, 'register'])->name('client/register');
-Route::post('client/register', [ClientLoginController::class, 'registration']);
+// Route::get('client/login', [ClientLoginController::class, 'index'])->name('client/login');
+// Route::post('client/post-login', [ClientLoginController::class, 'login'])->name('clientLogin.post');
+// Route::get('client/register', [ClientLoginController::class, 'register'])->name('client/register');
+// Route::post('client/register', [ClientLoginController::class, 'registration']);
 
-Route::get('peer/login', [PeerLoginController::class, 'index'])->name('peer/login');
-Route::post('peer/post-login', [PeerLoginController::class, 'login'])->name('peerLogin.post');
-Route::get('peer/register', [PeerLoginController::class, 'register'])->name('peer/register');
-Route::post('peer/register', [PeerLoginController::class, 'registration']);
+Route::get('/login', [LoginRegisterController::class, 'index'])->name('peer/login');
+Route::post('post-login', [LoginRegisterController::class, 'login'])->name('peerLogin.post');
+Route::get('/register', [LoginRegisterController::class, 'register'])->name('peer/register');
+Route::post('/register', [LoginRegisterController::class, 'registration']);
