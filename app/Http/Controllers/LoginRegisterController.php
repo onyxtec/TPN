@@ -17,6 +17,7 @@ class LoginRegisterController extends Controller
     }
     public function login(Request $request)
     {
+        dd($request);
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -25,23 +26,19 @@ class LoginRegisterController extends Controller
         if (Auth::guard('peer')->attempt($credentials)) {
             return response()->json([
                 'data' => $request,
-            ]);
-            
+            ]);       
         }
+        elseif(Auth::guard('client')->attempt($credentials)){
+            return response()->json([
+                'data' => $request,
+            ]);  
+        }           
         return response()->json([
-            'message' => "You Have Invalid Credentials",
+            'message' => "These Credentials do not match our records",
             'status' => 400,
             'data' => '',
         ],400, []);
-        // else {
-           
-        // }
-            // elseif(Auth::guard('client')->attempt($credentials)){
-            //     return response()->json([
-            //         'data' => $request,
-            //     ]);
-            // }
-        }
+    }
     public function register()
     {
         return view('layouts.PeerRegister');

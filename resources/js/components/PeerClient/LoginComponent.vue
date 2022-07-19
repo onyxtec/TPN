@@ -20,14 +20,15 @@
           <h3 class="d-flex justify-content-center">Welcome Back!</h3>
         </div>
         <div class="col-lg-6 offset-lg-3 mt-4">
-          <button class="px-3 py-3 ml-3 rounded" style="border-color: #8453A5; border-radius: 25px; width: 220px;">I'm a
-            Peer</button>
-          <button class="px-3 py-3 rounded"
-            style="border-color: #8453A5; border-radius: 25px; width: 220px; background-color: #8453A5; color: #FAF6FE;">I'm
-            a Client</button>
+          <button class="btn-active px-3 py-3 rounded peerButton button" value="1" v-on:click="passValue($event)">I'm
+            a Peer</button>
+          <button class="px-3 py-3 ml-3 rounded clientButton button" value="0" v-on:click="passValue($event)">I'm a
+            Client</button>
         </div>
+
         <form @submit.prevent="submit" method="POST" nonvalidate="nonvalidate" class="mt-5">
-          <div class="col-lg-6 mx-5 mt-5">
+          <span :class="message[0] ? 'd-block' : 'd-none'" class="text-danger error pl-3"><b>{{ message }}</b></span>
+          <div class="col-lg-6 mx-5">
             <div class="col-lg-12 text-left">
               <label class="mt-5 font-label label-box" for="Email">Email</label>
             </div>
@@ -58,28 +59,51 @@
   </div>
 </template>
 <script>
+import $ from "jquery";
 export default {
   data() {
     return {
       email: "",
       password: "",
+      message: "",
+      buttonValue: (this.buttonValue),
     };
   },
   methods: {
+    passValue: function(e) {
+    const buttonValue = e.target.value;
+    console.log(buttonValue);
+    },
     submit() {
       axios
         .post('post-login', {
           email: this.email,
           password: this.password,
+          buttonValue: this.buttonValue,
         })
         .then((response) => {
+          console.log(response.data)
           this.credentials = response.data.data;
-          console.log(this.credentials);
-          window.location.href = "/";
+          window.location.href = "/abc";
         })
-        .catch((error) => {
+        .catch(error => {
+          var message = error.response.data.message;
+          this.message = message
+          console.log(message)
         });
     },
   },
 };
+$(function () {
+  $(".peerButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
+  $('.peerButton').on('click', function () {
+    $(".peerButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
+    $(".clientButton").css({ 'background-color': '#fff', 'color': 'black', 'border-color': '#8453a5' })
+
+  });
+  $('.clientButton').on('click', function () {
+    $(".clientButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
+    $(".peerButton").css({ 'background-color': '#fff', 'color': 'black', 'border-color': '#8453a5' })
+  });
+});
 </script>

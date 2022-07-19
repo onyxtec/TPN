@@ -42,11 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/',[HomeController::class,'index']);
-// Route::get('client/login', [ClientLoginController::class, 'index'])->name('client/login');
-// Route::post('client/post-login', [ClientLoginController::class, 'login'])->name('clientLogin.post');
-// Route::get('client/register', [ClientLoginController::class, 'register'])->name('client/register');
-// Route::post('client/register', [ClientLoginController::class, 'registration']);
-
 Route::get('/login', [LoginRegisterController::class, 'index'])->name('peer/login');
 Route::post('post-login', [LoginRegisterController::class, 'login'])->name('peerLogin.post');
 Route::get('/register', [LoginRegisterController::class, 'register'])->name('peer/register');
