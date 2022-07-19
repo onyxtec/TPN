@@ -58,7 +58,7 @@ class LoginRegisterController extends Controller
         $peer->dob = $request->input('dob');
         $peer->specialization_type = $request->input('specialization_type');
         $peer->sub_type = $request->input('sub_type');
-        // $peer->save();
+        $peer->save();
         $curl = curl_init();
 $auth_data = array(
 	'client_id' 		=> 'qacsh136ou',
@@ -74,13 +74,12 @@ $result = curl_exec($curl);
 if(!$result){die("Connection Failure");}
 curl_close($curl);
 $token=json_decode($result);
-// dd($token->access_token);
-$response=Http::withToken($token->access_token)->post('https://merchant-api.flexbooker.com/Employee
-',[
-    "email"=> "abc@gmail.com",
-    "fullName"=> "abc",
+Http::withToken($token->access_token)->post('https://merchant-api.flexbooker.com/Employee',
+[
+    "email"=> $request->input('email'),
+    "fullName"=> $request->input('fullName'),
     "isAdmin"=> true,
-    "phone"=> "0300892832",
+    "phone"=> $request->input('contact_no'),
     "sendDailyRecap"=> true,
     "dailyRecapSendTime"=> "",
     "includeNotesInDailyRecap"=> true,
@@ -104,9 +103,8 @@ $response=Http::withToken($token->access_token)->post('https://merchant-api.flex
     "sendtoClientReplyToAddress"=> "",
     "alternateAddressForNotifications"=> "",
     "bccAddressForNotifications"=> "",
-    "password"=> "samrabbas"
+    "password"=> Hash::make($request->input('password'))
 ]);
-dd($response);
         return response()->json([
             'data' => $peer
         ]);
