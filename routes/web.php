@@ -11,6 +11,10 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use App\Models\Peer;
+use Twilio\Jwt\AccessToken;
 
 /*
 |--------------------------------------------------------------------------
