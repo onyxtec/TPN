@@ -13,6 +13,17 @@ import { ValidationProvider } from 'vee-validate';
 import { ValidationObserver, localize } from 'vee-validate';
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
+import { extend } from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules';
+import en from 'vee-validate/dist/locale/en.json';
+
+Object.keys(rules).forEach(rule => {
+  extend(rule, {
+    ...rules[rule], // copies rule configuration
+   
+  });
+  localize('en', en);
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,7 +40,7 @@ Vue.component('footer-component', require('./components/FooterComponent.vue').de
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('login-component', require('./components/LoginComponent.vue').default);
 Vue.component('register-component', require('./components/PeerClient/RegisterComponent.vue').default);
-Vue.component('login-component', require('./components/PeerClient/LoginComponent.vue').default);
+Vue.component('peer-login-component', require('./components/PeerClient/PeerLoginComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -17,7 +17,6 @@ class LoginRegisterController extends Controller
     }
     public function login(Request $request)
     {
-        dd($request);
         $request->validate([
             'email' => 'required',
             'password' => 'required',
