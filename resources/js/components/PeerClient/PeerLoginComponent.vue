@@ -25,16 +25,19 @@
           <button class="px-3 py-3 ml-3 rounded clientButton button" value="0" v-on:click="passValue($event)">I'm a
             Client</button>
         </div>
-
-        <form @submit.prevent="submit" method="POST" nonvalidate="nonvalidate" class="mt-5">
+<ValidationObserver v-slot="{ handleSubmit }">
+        <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="mt-5">
           <span :class="message[0] ? 'd-block' : 'd-none'" class="text-danger error pl-3"><b>{{ message }}</b></span>
           <div class="col-lg-6 mx-5">
             <div class="col-lg-12 text-left">
               <label class="mt-5 font-label label-box" for="Email">Email</label>
             </div>
             <div class="col-lg-10">
-              <input v-model="email" class="form-control login-input" type="email"
+              <ValidationProvider name="email" rules="required|email" v-slot="{ errors }" mode="lazy">
+              <input v-model="email" class="form-control login-input" type=""
                 placeholder="Enter your Email Address" />
+                 <span :class="errors[0] ? 'd-inline ml-5' : 'd-none'" class="text-danger">{{ errors[0]}}</span>
+                 </ValidationProvider>
             </div>
           </div>
           <div class="col-lg-6 mx-5">
@@ -42,8 +45,12 @@
               <label class=" font-label label-box" for="password">Password</label>
             </div>
             <div class="col-lg-10">
+              <ValidationProvider name="password" rules="required" v-slot="{ errors }">
               <input v-model="password" class="form-control login-input" type="password"
                 placeholder="Enter your Password" />
+                <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3 errors">{{ errors[0]}}</span>
+                 </ValidationProvider>
+                
             </div>
           </div>
           <div class="custom-control custom-checkbox checkbox mt-3">
@@ -54,6 +61,7 @@
             <button class="rounded button-login">Sign Up</button>
           </div>
         </form>
+        </ValidationObserver>
       </div>
     </div>
   </div>
@@ -66,6 +74,7 @@ export default {
       email: "",
       password: "",
       message: "",
+      error: [],
       buttonValue: (this.buttonValue),
     };
   },
