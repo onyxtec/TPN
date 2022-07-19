@@ -20,47 +20,50 @@
           <h3 class="d-flex justify-content-center">Welcome Back!</h3>
         </div>
         <div class="col-lg-6 offset-lg-3 mt-4">
-          <button class="btn-active px-3 py-3 rounded peerButton button" value="1" v-on:click="passValue($event)">I'm
+          <button class="btn-active px-3 py-3 rounded peerButton button" >I'm
             a Peer</button>
-          <button class="px-3 py-3 ml-3 rounded clientButton button" value="0" v-on:click="passValue($event)">I'm a
+          <button class="px-3 py-3 ml-3 rounded clientButton button">I'm a
             Client</button>
         </div>
-<ValidationObserver v-slot="{ handleSubmit }">
-        <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="mt-5">
-          <span :class="message[0] ? 'd-block' : 'd-none'" class="text-danger error pl-3"><b>{{ message }}</b></span>
-          <div class="col-lg-6 mx-5">
-            <div class="col-lg-12 text-left">
-              <label class="mt-5 font-label label-box" for="Email">Email</label>
+        <ValidationObserver v-slot="{ handleSubmit }">
+          <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="mt-5">
+            <span :class="message[0] ? 'd-block' : 'd-none'" class="text-danger error pl-3"><b>{{ message }}</b></span>
+            <div class="col-lg-6 mx-5">
+              <div class="col-lg-12 text-left">
+                <label class="mt-5 font-label label-box" for="Email">Email</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="email" rules="required|email" v-slot="{ errors }" mode="lazy">
+                  <input v-model="email" class="form-control login-input" type=""
+                    placeholder="Enter your email" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger" style="margin-left:122px;">{{
+                      errors[0]
+                  }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-            <div class="col-lg-10">
-              <ValidationProvider name="email" rules="required|email" v-slot="{ errors }" mode="lazy">
-              <input v-model="email" class="form-control login-input" type=""
-                placeholder="Enter your Email Address" />
-                 <span :class="errors[0] ? 'd-inline ml-5' : 'd-none'" class="text-danger">{{ errors[0]}}</span>
-                 </ValidationProvider>
+            <div class="col-lg-6 mx-5 mt-3">
+              <div class="col-lg-12 text-left">
+                <label class=" font-label label-box" for="password">Password</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="password" rules="required" v-slot="{ errors }">
+                  <input v-model="password" class="form-control login-input" type="password"
+                    placeholder="Enter your password" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3 "
+                    style="margin-left:110px;">{{ errors[0] }}</span>
+                </ValidationProvider>
+
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 mx-5">
-            <div class="col-lg-12 text-left">
-              <label class=" font-label label-box" for="password">Password</label>
+            <div class="custom-control custom-checkbox checkbox mt-3">
+              <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
+              <label class="custom-control-label" for="remember-me"> Remember Me </label>
             </div>
-            <div class="col-lg-10">
-              <ValidationProvider name="password" rules="required" v-slot="{ errors }">
-              <input v-model="password" class="form-control login-input" type="password"
-                placeholder="Enter your Password" />
-                <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3 errors">{{ errors[0]}}</span>
-                 </ValidationProvider>
-                
+            <div class="col-lg-6 mt-4 my-1">
+              <button class="rounded btn-login">Sign Up</button>
             </div>
-          </div>
-          <div class="custom-control custom-checkbox checkbox mt-3">
-            <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
-            <label class="custom-control-label" for="remember-me"> Remember Me </label>
-          </div>
-          <div class="col-lg-6 mt-4 my-1">
-            <button class="rounded button-login">Sign Up</button>
-          </div>
-        </form>
+          </form>
         </ValidationObserver>
       </div>
     </div>
@@ -75,25 +78,19 @@ export default {
       password: "",
       message: "",
       error: [],
-      buttonValue: (this.buttonValue),
     };
   },
   methods: {
-    passValue: function(e) {
-    const buttonValue = e.target.value;
-    console.log(buttonValue);
-    },
     submit() {
       axios
         .post('post-login', {
           email: this.email,
           password: this.password,
-          buttonValue: this.buttonValue,
         })
         .then((response) => {
           console.log(response.data)
           this.credentials = response.data.data;
-          window.location.href = "/abc";
+          window.location.href = "/";
         })
         .catch(error => {
           var message = error.response.data.message;
@@ -116,3 +113,8 @@ $(function () {
   });
 });
 </script>
+<style>
+.myerror {
+  margin-left: 126;
+}
+</style>
