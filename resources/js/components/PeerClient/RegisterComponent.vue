@@ -13,8 +13,8 @@
       </div>
       <div class="col-lg-7">
         <div class="d-flex justify-content-end mx-5 mt-5">
-          <p>Already Have an
-            Account?</p> <a class="ml-2" v-bind:href="'login'"><span style="color:#A136C5">SignIn Instead</span> </a>
+          <p>Already have an
+            account ?</p> <a class="ml-2" v-bind:href="'login'"><span style="color:#A136C5">Sign In Instead</span> </a>
         </div>
         <div class="col-lg-6 offset-lg-3 mt-5">
           <h3 class="d-flex justify-content-center">Welcome!</h3>
@@ -26,151 +26,179 @@
           <button class="px-3 py-3 ml-3 rounded clientButton button">I'm a
             Client</button>
         </div>
-        <form @submit.prevent="submit" method="POST" nonvalidate="nonvalidate">
-          <div class="col-lg-6 offset-lg-3 mt-5">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="fullName">Full Name</label>
+        <ValidationObserver v-slot="{ handleSubmit }">
+          <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate">
+            <div class="col-lg-6 offset-lg-3 mt-5">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="fullname">Full Name</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="fullname" rules="required" v-slot="{ errors }">
+                  <input v-model="fullName" class="form-control input-size" type="text"
+                    placeholder="Enter your full name" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-            <div class="col-lg-10">
-              <ValidationProvider name="fullName" rules="required" v-slot="{ errors }">
-                <input v-model="fullName" class="form-control input-size" type="text"
-                  placeholder="Enter your Full Name" />
-                <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
-              </ValidationProvider>
+            <div class="col-lg-6 offset-lg-3 mt-4">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="email">Email</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
+                  <input v-model="email" type="email" class="form-control input-size" placeholder="Enter email" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="email">Email address</label>
+            <div class="col-lg-6 offset-lg-3 mt-4">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="password">Password</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="password" rules="required|min:8" v-slot="{ errors }">
+                  <input v-model="password" type="password" class="form-control input-size"
+                    placeholder="Enter password" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-            <div class="col-lg-10">
-              <input v-model="email" type="email" class="form-control input-size" placeholder="Enter email" />
+            <div class="col-lg-6 offset-lg-3 mt-4">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="confirm_password">Confirm Password</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="confirm password" rules="required|min:8" v-slot="{ errors }">
+                  <input v-model="confirm_password" type="password" class="form-control input-size"
+                    placeholder="Confirm password" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="password">Password</label>
+            <div class="col-lg-6 offset-lg-3 mt-4">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="contact_no">Contact No</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="contact no" rules="required" v-slot="{ errors }">
+                  <input v-model="contact_no" type="tel" class="form-control input-size" placeholder="Contact no" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-            <div class="col-lg-10">
-              <input v-model="password" type="password" class="form-control input-size" placeholder="Enter Password" />
+            <div class="col-lg-6 offset-lg-3 mt-4 client">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="emergency_contact">Emergency Contact</label>
+              </div>
+              <div class="col-lg-10">
+                <input v-model="emergency_contact" type="tel" class="form-control input-size"
+                  placeholder="Emergency contact" />
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="confirm_password">Confirm Password</label>
+            <div class="col-lg-6 offset-lg-3 mt-4">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="dob">Date of Birth</label>
+              </div>
+              <div class="col-lg-10">
+                <ValidationProvider name="date of birth" rules="required" v-slot="{ errors }">
+                  <input v-model="dob" type="date" class="form-control input-size" placeholder="Date of birth" />
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
             </div>
-            <div class="col-lg-10">
-              <input v-model="confirm_password" type="password" class="form-control input-size"
-                placeholder="Confirm Password" />
+            <div class="col-lg-6 offset-lg-3 mt-4 client">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="address">Address</label>
+              </div>
+              <div class="col-lg-10">
+                <input v-model="address" type="text" class="form-control input-size" placeholder="Address" />
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="contact_no">Contact No</label>
+            <div class="col-lg-6 offset-lg-3 mt-4 peer">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="specialization_type">Specialization Type</label>
+              </div>
+              <div class="col-lg-10">
+                <select type="text" class="form-control" style=" height:50px;" v-model="specialization_type">
+                  <option disabled selected>Select Your Specialization</option>
+                  <option>Mental Health</option>
+                  <option>Substance Use Disorder</option>
+                  <option>Both</option>
+                </select>
+              </div>
             </div>
-            <div class="col-lg-10">
-              <input v-model="contact_no" type="tel" class="form-control input-size" placeholder="Contact no" />
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4 client">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="emergency_contact">Emergency Contact</label>
-            </div>
-            <div class="col-lg-10">
-              <input v-model="emergency_contact" type="tel" class="form-control input-size"
-                placeholder="Emergency Contact" />
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="dob">Date of Birth</label>
-            </div>
-            <div class="col-lg-10">
-              <input v-model="dob" type="date" class="form-control input-size" placeholder="Date of Birth" />
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4 client">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="address">Address</label>
-            </div>
-            <div class="col-lg-10">
-              <input v-model="address" type="text" class="form-control input-size" placeholder="Address" />
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4 peer">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="specialization_type">Specialization Type</label>
-            </div>
-            <div class="col-lg-10">
-              <select type="text" class="form-control" style=" height:50px;" v-model="specialization_type">
-                <option disabled selected>Select Your Specialization</option>
-                <option>Mental Health</option>
-                <option>Substance Use Disorder</option>
-                <option>Both</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4"
-            v-if="specialization_type == 'Substance Use Disorder' || specialization_type == 'Both'">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="substance_use">Substance Use Disorder</label>
-            </div>
-            <div class="col-lg-10">
-              <select type="text" class="form-control" style=" height:50px;" v-model="sub_type">
-                <option disabled selected>Select Your Substance Disorder</option>
-                <option>Cocaine</option>
-                <option>Opiates</option>
-                <option>Marijuana</option>
-                <option>Alcohol</option>
-                <option>Benzodiazepines</option>
-                <option>Heroin</option>
-                <option>Fentanyl</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4" v-if="sub_type == 'Other'" >
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="other">Other</label>
-            </div>
-            <div class="col-lg-10">
-              <input type="text" class="form-control input-size" placeholder="Other"  v-model="otherValue"/>
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4 client">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="problem_type">Problem Type</label>
-            </div>
-            <div class="col-lg-10">
-              <select type="text" class="form-control" style=" height:50px;" v-model="problem_type">
-                <option disabled selected>Select Your Problem</option>
-                <option>Mental Health</option>
-                <option>Substance Use Disorder</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-6 offset-lg-3 mt-4 client" v-if="problem_type == 'Substance Use Disorder'">
-            <div class="col-lg-12 text-left">
-              <label class="m-0 font-label" for="mental_type">Substance Use Disorder</label>
-            </div>
-            <div class="col-lg-10">
-              <select type="text" class="form-control" style=" height:50px;" v-model="substance_type">
-                <option disabled selected>Select Your Substance Disorder</option>
-                <option>Cocaine</option>
-                <option>Opiates</option>
-                <option>Marijuana</option>
-                <option>Alcohol</option>
-                <option>Benzodiazepines</option>
-                <option>Heroin</option>
-                <option>Fentanyl</option>
-              </select>
-            </div>
-          </div>
+            <div class="col-lg-6 offset-lg-3 mt-4"
+              v-if="specialization_type == 'Substance Use Disorder' || specialization_type == 'Both'">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="substance_use">Substance Use Disorder</label>
+              </div>
+              <div class="col-lg-10">
+                <select type="text" class="form-control" style=" height:50px;" v-model="sub_type">
+                  <option disabled selected>Select Your Substance Disorder</option>
+                  <option>Cocaine</option>
+                  <option>Opiates</option>
+                  <option>Marijuana</option>
+                  <option>Alcohol</option>
+                  <option>Benzodiazepines</option>
+                  <option>Heroin</option>
+                  <option>Fentanyl</option>
+                  <option>Other</option>
+                </select>
 
-          <div class="col-lg-6 offset-lg-3 mt-4 my-1">
-            <button type="submit" class="rounded btn-register">Sign Up</button>
-          </div>
-        </form>
+              </div>
+            </div>
+            <div class="col-lg-6 offset-lg-3 mt-4" v-if="sub_type == 'Other'">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="other">Other</label>
+              </div>
+              <div class="col-lg-10">
+
+                <input type="text" class="form-control input-size" placeholder="Other" v-model="otherValue" />
+              </div>
+            </div>
+            <div class="col-lg-6 offset-lg-3 mt-4 client">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="problem_type">Problem Type</label>
+              </div>
+              <div class="col-lg-10">
+
+                <select type="text" class="form-control" style=" height:50px;" v-model="problem_type">
+                  <option disabled selected>Select Your Problem</option>
+                  <option>Mental Health</option>
+                  <option>Substance Use Disorder</option>
+                </select>
+
+
+              </div>
+            </div>
+            <div class="col-lg-6 offset-lg-3 mt-4 client" v-if="problem_type == 'Substance Use Disorder'">
+              <div class="col-lg-12 text-left">
+                <label class="m-0 font-label" for="mental_type">Substance Use Disorder</label>
+              </div>
+              <div class="col-lg-10">
+                <select type="text" class="form-control" style=" height:50px;" v-model="substance_type">
+                  <option disabled selected>Select Your Substance Disorder</option>
+                  <option>Cocaine</option>
+                  <option>Opiates</option>
+                  <option>Marijuana</option>
+                  <option>Alcohol</option>
+                  <option>Benzodiazepines</option>
+                  <option>Heroin</option>
+                  <option>Fentanyl</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox checkboxes mt-3">
+              <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
+              <label class="custom-control-label" for="remember-me">I agree to <span style="color:#A136C5">privacy policy & terms</span></label>
+            </div>
+            <div class="col-lg-6 offset-lg-3 mt-4 my-5">
+              <button type="submit" class="rounded btn-register">Sign Up</button>
+            </div>
+          </form>
+        </ValidationObserver>
+
       </div>
     </div>
   </div>
@@ -193,6 +221,7 @@ export default {
       sub_type: '',
       otherValue: '',
       substance_type: '',
+      error: [],
     }
   },
   methods: {

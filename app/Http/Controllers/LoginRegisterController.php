@@ -55,52 +55,6 @@ class LoginRegisterController extends Controller
         $peer->specialization_type = $request->input('specialization_type');
         $peer->sub_type = $request->input('sub_type');
         $peer->save();
-        $curl = curl_init();
-$auth_data = array(
-	'client_id' 		=> 'qacsh136ou',
-	'client_secret' 	=> '5hkzu3ptz2r2kbm4ih5yd3soaozn8a59bngn7fljt8jt8x0bfm',
-	'grant_type' 		=> 'client_credentials'
-);
-curl_setopt($curl, CURLOPT_POST, 1);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $auth_data);
-curl_setopt($curl, CURLOPT_URL, 'https://auth.flexbooker.com/connect/token');
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-$result = curl_exec($curl);
-if(!$result){die("Connection Failure");}
-curl_close($curl);
-$token=json_decode($result);
-Http::withToken($token->access_token)->post('https://merchant-api.flexbooker.com/Employee',
-[
-    "email"=> $request->input('email'),
-    "fullName"=> $request->input('fullName'),
-    "isAdmin"=> true,
-    "phone"=> $request->input('contact_no'),
-    "sendDailyRecap"=> true,
-    "dailyRecapSendTime"=> "",
-    "includeNotesInDailyRecap"=> true,
-    "sendBookingChanges"=> true,
-    "biography"=> "",
-    "avatarUrl"=> "",
-    "viewReports"=> true,
-    "viewOthersBookings"=> true,
-    "editOthersBookings"=> true,
-    "viewOthersSchedules"=> true,
-    "editOthersSchedules"=> true,
-    "editBusinessSettings"=> true,
-    "viewCustomerList"=> true,
-    "editCustomerList"=> true,
-    "editServices"=> true,
-    "editOwnBookings"=> true,
-    "editOwnSchedules"=> true,
-    "editBookingWidgets"=> true,
-    "legendColor"=> "black",
-    "sendBookingChangesSms"=> true,
-    "sendtoClientReplyToAddress"=> "",
-    "alternateAddressForNotifications"=> "",
-    "bccAddressForNotifications"=> "",
-    "password"=> Hash::make($request->input('password'))
-]);
         return response()->json([
             'data' => $peer
         ]);
