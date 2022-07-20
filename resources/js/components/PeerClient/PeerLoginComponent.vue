@@ -1,20 +1,33 @@
 <template>
   <div class="container-fluid">
-    <div class="row ">
-      <div class="col-lg-5" style="background: #FAF6FE">
-        <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
+    <div class="row">
+      <div class="col-lg-5" style="background: #faf6fe">
+        <img class="mt-4 mx-5" src="/images/login/logo.png" alt="" />
         <div class="d-flex">
-          <img class="img-fluid pl-3" src="/images/login/image.png" alt="flower" style="height: 95vh;">
-          <div class="d-flex align-items-center" style="font-size: 35px; margin-top: -215px; margin-left: -220px;">
-            <span>Your shelter <br> From All <br><span style="color: #8453A5;">Mental</span>
-              Health<br>Issues</span>
+          <img
+            class="img-fluid pl-3"
+            src="/images/login/image.png"
+            alt="flower"
+            style="height: 95vh"
+          />
+          <div
+            class="d-flex align-items-center"
+            style="font-size: 35px; margin-top: -215px; margin-left: -220px"
+          >
+            <span
+              >Your shelter <br />
+              From All <br /><span style="color: #8453a5">Mental</span>
+              Health<br />Issues</span
+            >
           </div>
         </div>
       </div>
       <div class="col-lg-7">
         <div class="d-flex justify-content-end mx-5 mt-5">
-          <p>New on our platform?</p> <a class="ml-2" v-bind:href="'register'"><span style="color:#A136C5">Create an
-              account</span> </a>
+          <p>New on our platform?</p>
+          <a class="ml-2" v-bind:href="'register'"
+            ><span style="color: #a136c5">Create an account</span>
+          </a>
         </div>
         <div class="col-lg-6 offset-lg-3 mt-5">
           <h3 class="d-flex justify-content-center">Welcome Back!</h3>
@@ -83,33 +96,53 @@ export default {
   methods: {
     submit() {
       axios
-        .post('post-login', {
+        .post("post-login", {
           email: this.email,
           password: this.password,
         })
         .then((response) => {
-          console.log(response.data)
-          this.credentials = response.data.data;
-          window.location.href = "/";
+          if (response.data.message == "Plz verify your email to continue") {
+            window.location.href = "/login";
+          } else {
+            this.credentials = response.data.data;
+            window.location.href = "/abc";
+          }
         })
-        .catch(error => {
-          var message = error.response.data.message;
-          this.message = message
-          console.log(message)
+        .catch((error) => {
+          console.log(error.response);
         });
     },
   },
 };
 $(function () {
-  $(".peerButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
-  $('.peerButton').on('click', function () {
-    $(".peerButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
-    $(".clientButton").css({ 'background-color': '#fff', 'color': 'black', 'border-color': '#8453a5' })
-
+  $(".peerButton").css({
+    "background-color": "#8453a5",
+    color: "white",
+    "border-color": "#8453a5",
   });
-  $('.clientButton').on('click', function () {
-    $(".clientButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
-    $(".peerButton").css({ 'background-color': '#fff', 'color': 'black', 'border-color': '#8453a5' })
+  $(".peerButton").on("click", function () {
+    $(".peerButton").css({
+      "background-color": "#8453a5",
+      color: "white",
+      "border-color": "#8453a5",
+    });
+    $(".clientButton").css({
+      "background-color": "#fff",
+      color: "black",
+      "border-color": "#8453a5",
+    });
+  });
+  $(".clientButton").on("click", function () {
+    $(".clientButton").css({
+      "background-color": "#8453a5",
+      color: "white",
+      "border-color": "#8453a5",
+    });
+    $(".peerButton").css({
+      "background-color": "#fff",
+      color: "black",
+      "border-color": "#8453a5",
+    });
   });
 });
 </script>
