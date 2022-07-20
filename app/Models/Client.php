@@ -23,4 +23,10 @@ class Client extends Authenticatable
         'problem_type',
         'sub_type',
     ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+    public function verifyClient(){
+        return $this->hasOne(VerifyClient::class);
+    }
 }

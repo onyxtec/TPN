@@ -46,3 +46,5 @@ Route::get('/login', [LoginRegisterController::class, 'index'])->name('peer/logi
 Route::post('post-login', [LoginRegisterController::class, 'login'])->name('peerLogin.post');
 Route::get('/register', [LoginRegisterController::class, 'register'])->name('peer/register');
 Route::post('/register', [LoginRegisterController::class, 'registration']);
+Route::get('/peer/verify/{token}',[LoginRegisterController::class, 'verifyPeerEmail'])->name('peer/verify');
+Route::get('/client/verify/{token}',[LoginRegisterController::class, 'verifyClientEmail'])->name('peer/client');

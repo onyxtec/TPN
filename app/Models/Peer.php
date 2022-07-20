@@ -21,4 +21,10 @@ class Peer extends Authenticatable
         'specialization_type',
         'sub_type',
     ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+    public function verifyPeer(){
+        return $this->hasOne(VerifyPeer::class);
+    }
 }
