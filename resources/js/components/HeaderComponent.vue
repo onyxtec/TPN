@@ -20,8 +20,8 @@
           >
           <a class="nav-item nav-link" href="#">About</a>
           <a class="nav-item nav-link" href="#">Therapist</a>
-          <a class="nav-item nav-link" v-bind:href="/appointments/"
-            >Appointments</a
+          <a class="nav-item nav-link" v-bind:href="`/client/appointments/`"
+           >Appointments</a
 
           >
           <a class="nav-item nav-link" href="#">Pricing</a>
