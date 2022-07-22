@@ -9,7 +9,7 @@
 <body>
     <h2>Welcome to our website, {{$peer->fullName}}</h2>
     <p>
-        Click <a href="http://127.0.0.1:8000/peer/verify/{{$peer->verifyPeer->token}}">Here</a>  to verify your email
+        Click <a href="{{URL::to('/peer/verify/'.$peer->verifyPeer->token)}}">Here</a>  to verify your email
     </p>
 </body>
 </html>
