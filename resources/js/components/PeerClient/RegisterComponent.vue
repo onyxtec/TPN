@@ -1,5 +1,8 @@
 <template>
   <div class="container-fluid">
+    <!-- <div class="text-center">
+    <img src="/images/slider/image.gif" class="img" />
+    </div> -->
     <div class="row ">
       <div class="col-lg-5" style="background: #FAF6FE">
         <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
@@ -27,7 +30,8 @@
             Client</button>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
-          <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate">
+          <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="submit"
+            id="register-form">
             <div class="col-lg-6 offset-lg-3 mt-5">
               <div class="col-lg-12 text-left">
                 <label class="m-0 font-label" for="fullname">Full Name</label>
@@ -191,14 +195,15 @@
             </div>
             <div class="custom-control custom-checkbox checkboxes mt-3">
               <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
-              <label class="custom-control-label" for="remember-me">I agree to <span style="color:#A136C5">privacy policy & terms</span></label>
+              <label class="custom-control-label" for="remember-me">I agree to <span style="color:#A136C5">privacy
+                  policy & terms</span></label>
             </div>
             <div class="col-lg-6 offset-lg-3 mt-4 my-5">
-              <button type="submit" class="rounded btn-register" >Sign Up</button>
+              <button type="submit" id="register-btn" class="btn-register" >Sign Up</button>
+              <button type="button" class="btn-register" id="btn-register" > <img src="/images/slider/image.gif" height ="45px"  /></button>
             </div>
           </form>
         </ValidationObserver>
-
       </div>
     </div>
   </div>
@@ -251,6 +256,7 @@ export default {
 }
 $(function () {
   $(".client").hide();
+  $("#btn-register").hide();
   $(".peerButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
   $('.peerButton').on('click', function () {
     $(".peerButton").css({ 'background-color': '#8453a5', 'color': 'white', 'border-color': '#8453a5' })
@@ -265,6 +271,27 @@ $(function () {
     $(".peer").hide();
     $(".peerButton").css({ 'background-color': '#fff', 'color': 'black', 'border-color': '#8453a5' })
   });
+
+  $('#register-btn').on('click', function () {
+    $("#register-btn").hide();
+    $("#btn-register").show();
+  });
 });
 
+
 </script>
+<!-- <style>
+.img {
+  position: fixed;
+  display: inline-block;
+   width: 100%;
+  height: 100%; 
+  top: 0;
+  right: 450px;
+  text-align: center;
+  /* align-items: center; */
+  /* background: white; */
+  opacity: 0.7;
+  z-index: 99;
+}
+</style> -->
