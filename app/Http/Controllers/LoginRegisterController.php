@@ -150,13 +150,7 @@ class LoginRegisterController extends Controller
             $client->address = $request->input('address');
             $client->problem_type = $request->input('problem_type');
             $client->sub_type = $request->input('substance_type');
-            $client->save();
-            VerifyClient::create([
-                'token' => Str::random(60),
-                'client_id' => $client->id,
-            ]);
 
-            Mail::to($client->email)->send(new ClientEmail($client));
             $curl = curl_init();
             $auth_data = array(
                 'client_id'         => 'qacsh136ou',
@@ -177,7 +171,7 @@ class LoginRegisterController extends Controller
             $fullname = explode(" ", $request->input('fullName'));
             $firstname = $fullname[0];
             $lastname = $fullname[1];
-            $response=Http::withToken($token->access_token)->post(
+            $response = Http::withToken($token->access_token)->post(
                 'https://merchant-api.flexbooker.com/api/Customer',
                 [
                     "firstName" => $firstname,
@@ -187,7 +181,7 @@ class LoginRegisterController extends Controller
                     "notes" => "abc",
                     "customBookingFields" => [
                         [
-                            "merchantFieldId" => 0,
+                            "merchantFieldId" => 1,
                             "value" => ""
                         ]
                     ],
@@ -198,7 +192,16 @@ class LoginRegisterController extends Controller
                     "doNotSendInvitation" => true
                 ]
             );
-            // dd(json_decode($response));
+            $client_response = json_decode($response);
+            $client->flexbooker_clientId = $client_response->id;
+            $client->save();
+            VerifyClient::create([
+                'token' => Str::random(60),
+                'client_id' => $client->id,
+            ]);
+
+            Mail::to($client->email)->send(new ClientEmail($client));
+
             return response()->json([
                 'data' => $client
             ]);

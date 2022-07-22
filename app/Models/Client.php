@@ -22,6 +22,7 @@ class Client extends Authenticatable
         'address',
         'problem_type',
         'sub_type',
+        'flexbooker_clientId',
     ];
     protected $casts = [
         'email_verified_at' => 'datetime',
