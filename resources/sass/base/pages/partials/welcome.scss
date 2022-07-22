@@ -7,21 +7,21 @@
 }
 
 .button {
- border-style: solid;
- border-color: #8453a5;
+  border-style: solid;
+  border-color: #8453a5;
   border-radius: 25px;
   width: 220px;
-//   background-color: #8453a5;
+  //   background-color: #8453a5;
   color: black;
 }
 .button {
-    border-style: solid;
-    border-color: #8453a5;
-     border-radius: 25px;
-     width: 220px;
-   //   background-color: #8453a5;
-     color: black;
-   }
+  border-style: solid;
+  border-color: #8453a5;
+  border-radius: 25px;
+  width: 220px;
+  //   background-color: #8453a5;
+  color: black;
+}
 .font-label {
   font-size: 13px;
 }
@@ -38,7 +38,12 @@
 
 .btn-login {
   width: 605px;
-  background-image: linear-gradient(#491859, #9A53B1);
+  background: linear-gradient(
+    46.62deg,
+    rgba(73, 24, 89, 0.77) 0%,
+    rgba(154, 83, 177, 0.77) 93.64%
+  );
+  border-radius: 5px;
   margin-left: 184px;
   height: 40px;
   color: white;
@@ -49,18 +54,18 @@
 .checkboxes {
   margin-left: 300px;
 }
-.btn-register{
-    width: 80%;
-    margin-left: 10px;
-    border-color: #8453a5;
-    background: linear-gradient(46.62deg, rgba(73, 24, 89, 0.77) 0%, rgba(154, 83, 177, 0.77) 93.64%);
-border-radius: 5px;
-    height: 50px;
-    color: white;
+.btn-register {
+  width: 80%;
+  margin-left: 10px;
+  background: linear-gradient(
+    46.62deg,
+    rgba(73, 24, 89, 0.77) 0%,
+    rgba(154, 83, 177, 0.77) 93.64%
+  );
+  border-radius: 5px;
+  height: 50px;
+  color: white;
 }
-.error{
-  margin-left:190px;
- 
-
-
+.error {
+  margin-left: 190px;
 }

@@ -21,7 +21,7 @@ class LoginRegisterController extends Controller
 {
     public function index()
     {
-        return view('layouts.PeerLogin');
+        return view('layouts.Login');
     }
     public function login(Request $request)
     {
@@ -61,7 +61,7 @@ class LoginRegisterController extends Controller
     }
     public function register()
     {
-        return view('layouts.PeerRegister');
+        return view('layouts.Register');
     }
 
     public function registration(Request $request)

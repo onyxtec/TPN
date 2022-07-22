@@ -4,7 +4,7 @@
       <div class="col-lg-5" style="background: #FAF6FE">
         <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
         <div class="d-flex">
-          <img class="img-fluid pl-3" src="/images/login/image.png" alt="flower" style="height: 95vh;">
+          <img class="img-fluid" src="/images/login/image.png" alt="flower" style="height: 95vh;">
           <div class="d-flex align-items-center" style="font-size: 35px; margin-top: -215px; margin-left: -220px;">
             <span>Your shelter <br> From All <br><span style="color: #8453A5;">Mental</span>
               Health<br>Issues</span>
@@ -36,7 +36,7 @@
                 <ValidationProvider name="fullname" rules="required" v-slot="{ errors }">
                   <input v-model="fullName" class="form-control input-size" type="text"
                     placeholder="Enter your full name" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
             </div>
@@ -47,7 +47,7 @@
               <div class="col-lg-10">
                 <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
                   <input v-model="email" type="email" class="form-control input-size" placeholder="Enter email" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
             </div>
@@ -59,7 +59,7 @@
                 <ValidationProvider name="password" rules="required|min:8" v-slot="{ errors }">
                   <input v-model="password" type="password" class="form-control input-size"
                     placeholder="Enter password" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 <ValidationProvider name="confirm password" rules="required|min:8" v-slot="{ errors }">
                   <input v-model="confirm_password" type="password" class="form-control input-size"
                     placeholder="Confirm password" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
             </div>
@@ -82,7 +82,7 @@
               <div class="col-lg-10">
                 <ValidationProvider name="contact no" rules="required" v-slot="{ errors }">
                   <input v-model="contact_no" type="tel" class="form-control input-size" placeholder="Contact no" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
             </div>
@@ -102,7 +102,7 @@
               <div class="col-lg-10">
                 <ValidationProvider name="date of birth" rules="required" v-slot="{ errors }">
                   <input v-model="dob" type="date" class="form-control input-size" placeholder="Date of birth" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3">{{ errors[0] }}</span>
+                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
               </div>
             </div>
@@ -194,7 +194,7 @@
               <label class="custom-control-label" for="remember-me">I agree to <span style="color:#A136C5">privacy policy & terms</span></label>
             </div>
             <div class="col-lg-6 offset-lg-3 mt-4 my-5">
-              <button type="submit" class="rounded btn-register">Sign Up</button>
+              <button type="submit" class="rounded btn-register" >Sign Up</button>
             </div>
           </form>
         </ValidationObserver>
