@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class LoginRegisterController extends Controller
@@ -66,6 +67,13 @@ class LoginRegisterController extends Controller
 
     public function registration(Request $request)
     {
+        $rules = [
+            'email' => 'required|email|unique:peers|unique:clients',
+        ];
+        $validator = Validator::make($request->all(),$rules);
+        if ($validator->fails()) {    
+            return response()->json($validator->errors(), 400);
+        }
         if ($request->specialization_type != '') {
             $peer = new Peer();
             $peer->fullName = $request->input('fullName');
