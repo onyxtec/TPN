@@ -38,9 +38,9 @@ Object.keys(rules).forEach(rule => {
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('login-component', require('./components/LoginComponent.vue').default);
+Vue.component('admin-login-component', require('./components/AdminLoginComponent.vue').default);
 Vue.component('register-component', require('./components/PeerClient/RegisterComponent.vue').default);
-Vue.component('peer-login-component', require('./components/PeerClient/PeerLoginComponent.vue').default);
+Vue.component('login-component', require('./components/PeerClient/LoginComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

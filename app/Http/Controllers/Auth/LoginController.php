@@ -52,7 +52,7 @@ class LoginController extends Controller
             'blankPage' => true
         ];
 
-        return view('layouts.login', [
+        return view('layouts.AdminLogin', [
             'pageConfigs' => $pageConfigs
         ]);
     }
@@ -81,11 +81,11 @@ class LoginController extends Controller
         if (Auth::guard('client')->check()) {
             Session::flush();
             Auth::guard('client')->user()->logout;
-            return redirect()->route('client/login');
+            return redirect()->route('login');
         } elseif (Auth::guard('peer')->check()) {
             Session::flush();
             Auth::guard('peer')->user()->logout;
-            return redirect()->route('peer/login');
+            return redirect()->route('login');
         } else{
             Auth::logout();
             Session::flush();

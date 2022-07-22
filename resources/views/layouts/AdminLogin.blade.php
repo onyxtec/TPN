@@ -5,9 +5,9 @@
 @endsection
 @extends('layouts.app')
 @section('content')
-<login-component>
+<admin-login-component>
 
-</login-component>
+</admin-login-component>
 @endsection
 
 <style>
