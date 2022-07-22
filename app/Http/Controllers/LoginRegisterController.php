@@ -35,8 +35,10 @@ class LoginRegisterController extends Controller
             if (Auth::guard('peer')->user()->email_verified_at == null) {
                 Auth::guard('peer')->logout();
                 return response()->json([
-                    'message' => "Plz verify your email to continue",
-                ]);
+                    'message' => "Plz Verify your email to continue",
+                    'status' => 400,
+                    'data' => '',
+                ], 400, []);
             } else {
                 return response()->json([
                     'data' => $request,
@@ -46,8 +48,10 @@ class LoginRegisterController extends Controller
             if (Auth::guard('client')->user()->email_verified_at == null) {
                 Auth::guard('client')->logout();
                 return response()->json([
-                    'message' => "Plz verify your email to continue",
-                ]);
+                    'message' => "Plz Verify your email to continue",
+                    'status' => 400,
+                    'data' => '',
+                ], 400, []);
             } else {
                 return response()->json([
                     'data' => $request,
