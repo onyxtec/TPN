@@ -88,9 +88,12 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          console.log(response.data)
-          this.credentials = response.data.data;
-          window.location.href = "/";
+          if (response.data.message == "Plz verify your email to continue") {
+            window.location.href = "/login";
+          } else {
+            this.credentials = response.data.data;
+            window.location.href = "/";
+          }
         })
         .catch(error => {
           var message = error.response.data.message;
