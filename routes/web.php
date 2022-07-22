@@ -32,7 +32,7 @@ use Twilio\Jwt\AccessToken;
 Route::get('admin/login', [LoginController::class, 'showLoginForm'])->name('admin/login');
 Route::post('/login', [LoginController::class, 'login'])->name('login/post');
 Route::get('/client/appointments',[AppointmentController::class, 'index'])->name('client.index');
-Route::get('bookingform',[AppointmentController::class, 'bookingform']);
+Route::get('bookingform',[AppointmentController::class, 'bookingform'])->name('/bookingform');
 
 
 // Dashboard Routes
