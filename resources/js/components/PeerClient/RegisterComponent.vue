@@ -29,6 +29,9 @@
           <button class="px-3 py-3 ml-3 rounded clientButton button">I'm a
             Client</button>
         </div>
+        <div>
+          <!-- <span class="text-danger">{{notifmsg}} </span> -->
+        </div>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="submit"
             id="register-form">
@@ -53,6 +56,9 @@
                   <input v-model="email" type="email" class="form-control input-size" placeholder="Enter email" />
                   <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger">{{ errors[0] }}</span>
                 </ValidationProvider>
+                <span :class="notifmsg ? 'd-block' : 'd-none'" class="text-danger">{{
+                      notifmsg
+                  }}</span>
               </div>
             </div>
             <div class="col-lg-6 offset-lg-3 mt-4">
@@ -199,8 +205,9 @@
                   policy & terms</span></label>
             </div>
             <div class="col-lg-6 offset-lg-3 mt-4 my-5">
-              <button type="submit" id="register-btn" class="btn-register" >Sign Up</button>
-              <button type="button" class="btn-register" id="btn-register" > <img src="/images/slider/image.gif" height ="45px"  /></button>
+              <button type="submit" id="register-btn" class="btn-register">Sign Up</button>
+              <button type="button" class="btn-register" id="btn-register"> <img src="/images/slider/image.gif"
+                  height="45px" /></button>
             </div>
           </form>
         </ValidationObserver>
@@ -227,6 +234,7 @@ export default {
       otherValue: '',
       substance_type: '',
       error: [],
+      notifmsg: ''
     }
   },
   methods: {
@@ -249,7 +257,9 @@ export default {
           this.credentials = response.data.data
           window.location.href = '/login';
         })
-        .catch(error => {
+        .catch(e => {
+          this.notifmsg = e.response.data.email[0];
+          console.log(this.notifmsg );
         })
     }
   }
@@ -277,21 +287,4 @@ $(function () {
     $("#btn-register").show();
   });
 });
-
-
 </script>
-<!-- <style>
-.img {
-  position: fixed;
-  display: inline-block;
-   width: 100%;
-  height: 100%; 
-  top: 0;
-  right: 450px;
-  text-align: center;
-  /* align-items: center; */
-  /* background: white; */
-  opacity: 0.7;
-  z-index: 99;
-}
-</style> -->
