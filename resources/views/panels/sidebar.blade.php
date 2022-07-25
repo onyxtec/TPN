@@ -4,7 +4,7 @@ $configData = Helper::applClasses();
 <div class="main-menu menu-fixed {{(($configData['theme'] === 'dark') || ($configData['theme'] === 'semi-dark')) ? 'menu-dark' : 'menu-light'}} menu-accordion menu-shadow" data-scroll-to-active="true">
   <div class="navbar-header">
     <ul class="nav navbar-nav flex-row">
-      <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ url('/') }}">
+      <li class="nav-item mr-auto"><a class="navbar-brand" href="">
         <img style="max-width:150px; height:auto"
             src="/images/logo/logo.png"
             class="attachment-full size-full" alt="" loading="lazy"
