@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="row ">
       <div class="col-lg-5" style="background: #FAF6FE">
-        <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
+        <img class="mt-4 mx-5" src="/images/logo/logo.png" alt="">
         <div class="d-flex">
-          <img class="img-fluid pl-3" src="/images/login/image.png" alt="flower" style="height: 95vh;">
-          <div class="d-flex align-items-center" style="font-size: 35px; margin-top: -215px; margin-left: -220px;">
-            <span>Your shelter <br> From All <br><span style="color: #8453A5;">Mental</span>
-              Health<br>Issues</span>
+          <img class="img-fluid pl-3" src="/images/login/image.png" alt="flower">
+          <div class="d-flex align-items-center text">
+            <span>Your shelter from<br>all<span style="color: #8453A5;"> Mental</span>
+              Health<br>issues</span>
           </div>
         </div>
       </div>
@@ -16,55 +16,62 @@
           <p>New on our platform?</p> <a class="ml-2" v-bind:href="'register'"><span style="color:#A136C5">Create an
               account</span> </a>
         </div>
-        <div class="col-lg-6 offset-lg-3 mt-5">
-          <h3 class="d-flex justify-content-center">Welcome Back!</h3>
+        <div style="margin-top:100px;">
+          <div class="col-lg-6 offset-lg-3 mx-5 mt-5">
+            <div class="col-lg-12 ml-5 pl-5">
+              <h2 class="text-center mt-5">Welcome Back!</h2>
+            </div>
+          </div>
+          <div class="col-lg-12 mt-5 ml-5 pl-5">
+            <div class="col-lg-10 ml-5 pl-5">
+              <button class="btn-active text-center rounded px-3 py-3 w-25 ml-3 pl-5 peerButton button">I'm
+                a Peer</button>
+              <button class="rounded text-center px-3 py-3 ml-3 w-25 ml-2 pl-5 clientButton button">I'm a
+                Client</button>
+            </div>
+          </div>
+          <ValidationObserver v-slot="{ handleSubmit }">
+            <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="mt-5">
+              <span :class="message[0] ? 'd-block' : 'd-none'" class="text-danger error pl-3"><b>{{ message
+              }}</b></span>
+              <div class="col-lg-6 offset-lg-3 mx-5 mb-0">
+                <div class="col-lg-12 ml-5 pl-5">
+                  <label class="mt-5 ml-4 pl-4" for="Email">Email</label>
+                </div>
+                <div class="col-lg-12 ml-5 pl-5">
+                  <ValidationProvider name="email" rules="required|email" v-slot="{ errors }" mode="lazy">
+                    <input v-model="email" class="form-control align-center ml-5 input-size" type=""
+                      placeholder="Enter your email" />
+                    <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger ml-5">{{
+                        errors[0]
+                    }}</span>
+                  </ValidationProvider>
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 mx-5">
+                <div class="col-lg-12 ml-5 pl-5">
+                  <label class="mt-3 ml-4 pl-4" for="password">Password</label>
+                </div>
+                <div class="col-lg-12 ml-5 pl-5">
+                  <ValidationProvider name="password" rules="required" v-slot="{ errors }" mode="lazy">
+                    <input v-model="password" class="form-control align-center ml-5 input-size" type=""
+                      placeholder="Enter your password" />
+                    <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger ml-5">{{
+                        errors[0]
+                    }}</span>
+                  </ValidationProvider>
+                </div>
+              </div>
+              <div class="custom-control custom-checkbox checkbox mt-3">
+                <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
+                <label class="custom-control-label" for="remember-me"> Remember Me </label>
+              </div>
+              <div class="col-lg-6 mt-4 my-1">
+                <button class="btn-login">Sign Up</button>
+              </div>
+            </form>
+          </ValidationObserver>
         </div>
-        <div class="col-lg-6 offset-lg-3 mt-4">
-          <button class="btn-active px-3 py-3 rounded peerButton button" >I'm
-            a Peer</button>
-          <button class="px-3 py-3 ml-3 rounded clientButton button">I'm a
-            Client</button>
-        </div>
-        <ValidationObserver v-slot="{ handleSubmit }">
-          <form @submit.prevent="handleSubmit(submit)" method="POST" nonvalidate="nonvalidate" class="mt-5">
-            <span :class="message[0] ? 'd-block' : 'd-none'" class="text-danger error pl-3"><b>{{ message }}</b></span>
-            <div class="col-lg-6 mx-5">
-              <div class="col-lg-12 text-left">
-                <label class="mt-5 font-label label-box" for="Email">Email</label>
-              </div>
-              <div class="col-lg-10">
-                <ValidationProvider name="email" rules="required|email" v-slot="{ errors }" mode="lazy">
-                  <input v-model="email" class="form-control login-input" type=""
-                    placeholder="Enter your email" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger" style="margin-left:122px;">{{
-                      errors[0]
-                  }}</span>
-                </ValidationProvider>
-              </div>
-            </div>
-            <div class="col-lg-6 mx-5 mt-3">
-              <div class="col-lg-12 text-left">
-                <label class=" font-label label-box" for="password">Password</label>
-              </div>
-              <div class="col-lg-10">
-                <ValidationProvider name="password" rules="required" v-slot="{ errors }">
-                  <input v-model="password" class="form-control login-input" type="password"
-                    placeholder="Enter your password" />
-                  <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger pl-3 "
-                    style="margin-left:110px;">{{ errors[0] }}</span>
-                </ValidationProvider>
-
-              </div>
-            </div>
-            <div class="custom-control custom-checkbox checkbox mt-3">
-              <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
-              <label class="custom-control-label" for="remember-me"> Remember Me </label>
-            </div>
-            <div class="col-lg-6 mt-4 my-1">
-              <button class=" btn-login">Sign Up</button>
-            </div>
-          </form>
-        </ValidationObserver>
       </div>
     </div>
   </div>

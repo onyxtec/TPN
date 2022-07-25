@@ -33,7 +33,7 @@ window.colors = {
   'use strict';
   var $html = $('html');
   var $body = $('body');
-  var $textcolor = '#4e5154';
+  var $textcolor = '#6e6b7b';
   var assetPath = '../../../app-assets/';
 
   if ($('body').attr('data-framework') === 'laravel') {

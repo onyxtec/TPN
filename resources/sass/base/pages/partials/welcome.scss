@@ -1,26 +1,22 @@
-.font-label {
-  font-size: 13px;
+.main-body{
+  color:#6e6b7b;
+  font-family: 'Roboto';
 }
+.heading{
+  margin-top:200px;
+}
+.text {
+  font-size: 50px;
+  margin-top: -320px;
+  margin-left: -400px;
 
+}
 .input-size {
   height: 50px;
 }
-
 .button {
-  border-style: solid;
   border-color: #8453a5;
-  border-radius: 25px;
-  width: 220px;
-  //   background-color: #8453a5;
-  color: black;
-}
-.button {
-  border-style: solid;
-  border-color: #8453a5;
-  border-radius: 25px;
-  width: 220px;
-  //   background-color: #8453a5;
-  color: black;
+  color: #8453a5;
 }
 .font-label {
   font-size: 13px;
@@ -45,7 +41,7 @@
   );
   border-radius: 5px;
   margin-left: 184px;
-  height: 40px;
+  height: 45px;
   color: white;
 }
 .checkbox {

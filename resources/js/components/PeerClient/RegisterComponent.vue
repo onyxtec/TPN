@@ -7,10 +7,10 @@
       <div class="col-lg-5" style="background: #FAF6FE">
         <img class="mt-4 mx-5" src="/images/login/logo.png" alt="">
         <div class="d-flex">
-          <img class="img-fluid" src="/images/login/image.png" alt="flower" style="height: 95vh;">
-          <div class="d-flex align-items-center" style="font-size: 35px; margin-top: -215px; margin-left: -220px;">
-            <span>Your shelter <br> From All <br><span style="color: #8453A5;">Mental</span>
-              Health<br>Issues</span>
+          <img class="img-fluid" src="/images/login/image.png" alt="flower">
+          <div class="d-flex align-items-center" style="font-size: 45px; margin-top: -215px; margin-left: -220px;">
+            <span >Your shelter from<br>all <br><span style="color: #8453A5;">Mental</span>
+              Health<br>issues</span>
           </div>
         </div>
       </div>
