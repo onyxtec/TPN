@@ -63,9 +63,6 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-            <a class="dropdown-item" href="javascript:void(0)">
-              <i class="mr-50" data-feather="user"></i> Profile
-            </a>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="mr-50" data-feather="power"></i> Logout
             </a>
