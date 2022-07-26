@@ -1,6 +1,6 @@
 @extends('customer.layouts.app')
 @section('content')
-<link rel="stylesheet" href="{{ asset('customer-resources/css/base/page-headerfooter.css') }}">
+<link rel="stylesheet" href="{{ asset(mix('customer-resources/sass/base/page-headerfooter.css')) }}">
 {{-- <link rel="stylesheet" href="{{ asset(mix('css/base/pages/page-auth.css')) }}"> --}}
 <div>
     @if (Auth::guard('client')->user())
