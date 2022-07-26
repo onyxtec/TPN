@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-lg-12 ml-5 pl-5">
                   <ValidationProvider name="password" rules="required" v-slot="{ errors }" mode="lazy">
-                    <input v-model="password" class="form-control align-center ml-5 input-size" type=""
+                    <input v-model="password" class="form-control align-center ml-5 input-size" type="password"
                       placeholder="Enter your password" />
                     <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger ml-5">{{
                         errors[0]

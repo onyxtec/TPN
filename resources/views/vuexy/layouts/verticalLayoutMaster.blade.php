@@ -5,11 +5,11 @@
 
   {{-- Include Sidebar --}}
   @if((isset($configData['showMenu']) && $configData['showMenu'] === true))
-  @include('panels.sidebar')
+  @include('vuexy.panels.sidebar')
   @endif
 
   {{-- Include Navbar --}}
-  @include('panels.navbar')
+  @include('vuexy.panels.navbar')
 
   <!-- BEGIN: Content-->
   <div class="app-content content {{ $configData['pageClass'] }}">
@@ -38,7 +38,7 @@
     <div class="content-wrapper {{ $configData['layoutWidth'] === 'boxed' ? 'container p-0' : '' }}">
       {{-- Include Breadcrumb --}}
       @if($configData['pageHeader'] === true && isset($configData['pageHeader']))
-      @include('panels.breadcrumb')
+      @include('vuexy.panels.breadcrumb')
       @endif
 
       <div class="content-body">
@@ -55,10 +55,10 @@
   <div class="drag-target"></div>
 
   {{-- include footer --}}
-  @include('panels/footer')
+  @include('vuexy/panels/footer')
 
   {{-- include default scripts --}}
-  @include('panels/scripts')
+  @include('vuexy/panels/scripts')
 
   <script type="text/javascript">
     $(window).on('load', function() {

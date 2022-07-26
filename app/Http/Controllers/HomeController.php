@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
    public function index(){
-    return view('home');
+    return view('customer.home');
    }
    public function getClient($id){
          $client=Client::where('id',$id)->first();

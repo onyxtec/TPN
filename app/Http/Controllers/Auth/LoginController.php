@@ -52,7 +52,7 @@ class LoginController extends Controller
             'blankPage' => true
         ];
 
-        return view('layouts.AdminLogin', [
+        return view('vuexy.layouts.AdminLogin', [
             'pageConfigs' => $pageConfigs
         ]);
     }

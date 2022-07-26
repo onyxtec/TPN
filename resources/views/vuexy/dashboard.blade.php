@@ -1,5 +1,5 @@
 
-@extends('layouts/contentLayoutMaster')
+@extends('vuexy/layouts/contentLayoutMaster')
 
 @section('title', 'Dashboard')
 
