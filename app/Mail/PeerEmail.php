@@ -28,6 +28,6 @@ class PeerEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.PeerEmail');
+        return $this->view('customer.emails.PeerEmail');
     }
 }

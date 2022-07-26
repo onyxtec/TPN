@@ -23,7 +23,7 @@ class LoginRegisterController extends Controller
 {
     public function index()
     {
-        return view('layouts.Login');
+        return view('customer.layouts.Login');
     }
     public function login(Request $request)
     {
@@ -67,7 +67,7 @@ class LoginRegisterController extends Controller
     }
     public function register()
     {
-        return view('layouts.Register');
+        return view('customer.layouts.Register');
     }
 
     public function registration(Request $request)

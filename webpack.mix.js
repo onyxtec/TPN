@@ -15,6 +15,7 @@ require('dotenv').config()
 
 const glob = require('glob')
 const path = require('path')
+mixAssetsDir('customer_resource/**', (src, dest) => mix.copy(src, dest))
 
 /*
  |--------------------------------------------------------------------------
@@ -26,6 +27,14 @@ function mixAssetsDir(query, cb) {
   ;(glob.sync('resources/' + query) || []).forEach(f => {
     f = f.replace(/[\\\/]+/g, '/')
     cb(f, f.replace('resources', 'public'))
+  })
+}
+
+
+function mixAssetsDir(query, cb) {
+  ;(glob.sync('resources/customer-resources' + query) || []).forEach(f => {
+    f = f.replace(/[\\\/]+/g, '/')
+    cb(f, f.replace('resources/customer-resources', 'public/customer-resources'))
   })
 }
 
@@ -71,6 +80,8 @@ mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
   .js('resources/js/app.js', 'public/js').vue()
+  .js('resources/customer-resources/js/app.js', 'public/customer-resources/js').vue()
+
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/core.scss', 'public/css', {sassOptions})
   .sass('resources/sass/overrides.scss', 'public/css', {sassOptions})

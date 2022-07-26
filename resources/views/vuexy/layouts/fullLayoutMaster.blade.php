@@ -19,10 +19,10 @@ $configData = Helper::applClasses();
   {{-- <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo/favicon.ico')}}"> --}}
 
   {{-- Include core + vendor Styles --}}
-  @include('panels/styles')
+  @include('vuexy/panels/styles')
 
   {{-- Include core + vendor Styles --}}
-  @include('panels/styles')
+  @include('vuexy/panels/styles')
 </head>
 
 
@@ -44,7 +44,7 @@ $configData = Helper::applClasses();
   <!-- End: Content-->
 
   {{-- include default scripts --}}
-  @include('panels/scripts')
+  @include('vuexy/panels/scripts')
 
   <script type="text/javascript">
     $(window).on('load', function() {

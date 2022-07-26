@@ -30,6 +30,6 @@ class ClientEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.ClientEmail');
+        return $this->view('customer.emails.ClientEmail');
     }
 }
