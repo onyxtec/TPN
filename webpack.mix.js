@@ -15,7 +15,6 @@ require('dotenv').config()
 
 const glob = require('glob')
 const path = require('path')
-mixAssetsDir('customer_resource/**', (src, dest) => mix.copy(src, dest))
 
 /*
  |--------------------------------------------------------------------------
@@ -75,6 +74,14 @@ mixAssetsDir('fonts', (src, dest) => mix.copy(src, dest))
 mixAssetsDir('fonts/**/**/*.css', (src, dest) => mix.copy(src, dest))
 mix.copyDirectory('resources/images', 'public/images')
 mix.copyDirectory('resources/data', 'public/data')
+
+
+mixAssetsDir('customer-resources/**', (src, dest) => mix.copy(src, dest))
+mix
+.sass('resources/customer-resources/sass/base/page-headerfooter.scss', 'public/customer-resources/sass/base/', {sassOptions})
+.sass('resources/customer-resources/sass/base/welcome.scss', 'public/customer-resources/sass/base/', {sassOptions})
+
+
 
 mix
   .js('resources/js/core/app-menu.js', 'public/js/core')

@@ -1,0 +1,67 @@
+.main-body {
+  color: #6e6b7b;
+  font-family: "Roboto";
+}
+
+.heading {
+  margin-top: 200px;
+}
+
+.text {
+  font-size: 50px;
+  margin-top: -320px;
+  margin-left: -400px;
+}
+
+.input-size {
+  height: 50px;
+}
+
+.button {
+  border-color: #8453a5;
+  color: #8453a5;
+}
+
+.font-label {
+  font-size: 13px;
+}
+
+.label-box {
+  margin-left: 126px;
+}
+
+.login-input {
+  height: 40px;
+  width: 600px;
+  margin-left: 126px;
+}
+
+.btn-login {
+  width: 605px;
+  background: linear-gradient(46.62deg, rgba(73, 24, 89, 0.77) 0%, rgba(154, 83, 177, 0.77) 93.64%);
+  border-radius: 5px;
+  margin-left: 184px;
+  height: 45px;
+  color: white;
+}
+
+.checkbox {
+  margin-left: 200px;
+}
+
+.checkboxes {
+  margin-left: 300px;
+}
+
+.btn-register {
+  width: 80%;
+  margin-left: 10px;
+  background: linear-gradient(46.62deg, rgba(73, 24, 89, 0.77) 0%, rgba(154, 83, 177, 0.77) 93.64%);
+  border-radius: 5px;
+  height: 50px;
+  color: white;
+}
+
+.error {
+  margin-left: 190px;
+}
