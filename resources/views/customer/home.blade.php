@@ -1,7 +1,6 @@
 @extends('customer.layouts.app')
 @section('content')
 <link rel="stylesheet" href="{{ asset(mix('customer-resources/sass/base/page-headerfooter.css')) }}">
-{{-- <link rel="stylesheet" href="{{ asset(mix('css/base/pages/page-auth.css')) }}"> --}}
 <div>
     @if (Auth::guard('client')->user())
             <header-component :user={{ Auth::guard('client')->user()->id }}>
@@ -13,6 +12,7 @@
         <header-component>
         </header-component>
         @endif
+        @yield('main-section')
     <footer-component>
     </footer-component>
 </div>

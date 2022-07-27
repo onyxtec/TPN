@@ -9,6 +9,7 @@ use App\Http\Controllers\PeerLoginController;
 use App\Http\Controllers\Admin\PeerController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Client\AppointmentController;
+use App\Http\Controllers\Client\BookingController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
@@ -82,13 +83,45 @@ Route::get('services/', function () {
       "employeeId" => 80335,
       "services" => [
         [
-          "serviceId" => 50845,
-          "price" => 0
-        ],
-        [
-          "serviceId" => 50845,
-          "price" => 0
-        ],
+            "employeeId"=> 80335,
+            "services"=> [
+                [
+                "serviceId"=> 50845,
+                "price"=> 0
+                ],
+                [
+                    "serviceId"=> 50845,
+                    "price"=> 0
+                    ],
+              
+            ],
+            "bufferTimeInMinutes"=> 40,
+            "startDate"=> "7/20/2022",
+            "endDate"=> "7/29/2022",
+            "locationId"=> 0,
+            "recurs"=> true,
+            "availableDays"=> [
+              [
+                "day"=> 0,
+                "hours"=> [
+                  [
+                    "startTime"=> "12:00 AM",
+                    "endTime"=> "7:00 PM"
+                  ]
+                ],
+                "date"=> "7/20/2022"
+              ]
+            ],
+            "scheduleType"=> 0,
+            "slots"=> 0
+]
+    );
+    // $services=json_decode($abc);
+    // dd($abc);
+});
+Route::get('/currentclient/{id}',[HomeController::class,'getClient'])->name('/currentclient');
+Route::get('mybookings',[BookingController::class,'index']);
+Route::get('clientbookings',[BookingController::class,'bookings']);
 
       ],
       "bufferTimeInMinutes" => 40,

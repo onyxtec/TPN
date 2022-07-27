@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div v-else>
+      <div class="d-flex" v-else>
         <a class="nav-item nav-link" v-bind:href="'/login'">Sign In</a>
         <button class="book-now">Book Now</button>
       </div>
