@@ -24,9 +24,9 @@
           </div>
           <div class="col-lg-12 mt-5 ml-5 pl-5">
             <div class="col-lg-10 ml-5 pl-5">
-              <button class="btn-active text-center rounded px-3 py-3 w-25 ml-3 pl-5 peerButton button">I'm
+              <button class="btn-active text-center rounded px-3 py-3 w-25 ml-3 pl-5 peerButton button" @click="value=1" type="button">I'm
                 a Peer</button>
-              <button class="rounded text-center px-3 py-3 ml-3 w-25 ml-2 pl-5 clientButton button">I'm a
+              <button class="rounded text-center px-3 py-3 ml-3 w-25 ml-2 pl-5 clientButton button" @click="value=2" >I'm a
                 Client</button>
             </div>
           </div>
@@ -54,6 +54,9 @@
                 </div>
                 <div class="col-lg-12 ml-5 pl-5">
                   <ValidationProvider name="password" rules="required" v-slot="{ errors }" mode="lazy">
+                    <div class="text-right ml-2">
+                      <a v-bind:href="'forget-password/'+ value" class="small font-weight-bold">Forgot Password?</a>
+                    </div>
                     <input v-model="password" class="form-control align-center ml-5 input-size" type="password"
                       placeholder="Enter your password" />
                     <span :class="errors[0] ? 'd-block' : 'd-none'" class="text-danger ml-5">{{
@@ -85,6 +88,7 @@ export default {
       password: "",
       message: "",
       error: [],
+      value: 1,
     };
   },
   methods: {
@@ -93,7 +97,8 @@ export default {
         .post('post-login', {
           email: this.email,
           password: this.password,
-        })
+          value: this.value,
+                  })
         .then((response) => {
           if (response.data.message == "Plz verify your email to continue") {
             window.location.href = "/login";
@@ -108,6 +113,9 @@ export default {
           console.log(message)
         });
     },
+     editImageProduct() {
+      console.log('File object', this.image);
+    }
   },
 };
 $(function () {

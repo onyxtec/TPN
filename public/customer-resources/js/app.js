@@ -68,7 +68,8 @@ __webpack_require__.r(__webpack_exports__);
       email: "",
       password: "",
       message: "",
-      error: []
+      error: [],
+      value: 1
     };
   },
   methods: {
@@ -77,7 +78,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('post-login', {
         email: this.email,
-        password: this.password
+        password: this.password,
+        value: this.value
       }).then(function (response) {
         if (response.data.message == "Plz verify your email to continue") {
           window.location.href = "/login";
@@ -90,6 +92,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.message = message;
         console.log(message);
       });
+    },
+    editImageProduct: function editImageProduct() {
+      console.log('File object', this.image);
     }
   }
 });
@@ -490,7 +495,28 @@ var render = function render() {
     staticStyle: {
       "margin-top": "100px"
     }
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("ValidationObserver", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-12 mt-5 ml-5 pl-5"
+  }, [_c("div", {
+    staticClass: "col-lg-10 ml-5 pl-5"
+  }, [_c("button", {
+    staticClass: "btn-active text-center rounded px-3 py-3 w-25 ml-3 pl-5 peerButton button",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        _vm.value = 1;
+      }
+    }
+  }, [_vm._v("I'm\n                a Peer")]), _vm._v(" "), _c("button", {
+    staticClass: "rounded text-center px-3 py-3 ml-3 w-25 ml-2 pl-5 clientButton button",
+    on: {
+      click: function click($event) {
+        _vm.value = 2;
+      }
+    }
+  }, [_vm._v("I'm a\n                Client")])])]), _vm._v(" "), _c("ValidationObserver", {
     scopedSlots: _vm._u([{
       key: "default",
       fn: function fn(_ref) {
@@ -579,7 +605,14 @@ var render = function render() {
             key: "default",
             fn: function fn(_ref3) {
               var errors = _ref3.errors;
-              return [_c("input", {
+              return [_c("div", {
+                staticClass: "text-right ml-2"
+              }, [_c("a", {
+                staticClass: "small font-weight-bold",
+                attrs: {
+                  href: "forget-password/" + _vm.value
+                }
+              }, [_vm._v("Forgot Password?")])]), _vm._v(" "), _c("input", {
                 directives: [{
                   name: "model",
                   rawName: "v-model",
@@ -672,19 +705,6 @@ var staticRenderFns = [function () {
   }, [_c("h2", {
     staticClass: "text-center mt-5"
   }, [_vm._v("Welcome Back!")])])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "col-lg-12 mt-5 ml-5 pl-5"
-  }, [_c("div", {
-    staticClass: "col-lg-10 ml-5 pl-5"
-  }, [_c("button", {
-    staticClass: "btn-active text-center rounded px-3 py-3 w-25 ml-3 pl-5 peerButton button"
-  }, [_vm._v("I'm\n                a Peer")]), _vm._v(" "), _c("button", {
-    staticClass: "rounded text-center px-3 py-3 ml-3 w-25 ml-2 pl-5 clientButton button"
-  }, [_vm._v("I'm a\n                Client")])])]);
 }];
 render._withStripped = true;
 
