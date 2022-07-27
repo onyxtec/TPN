@@ -62,4 +62,3 @@ Route::get('/client/verify/{token}', [LoginRegisterController::class, 'verifyCli
 Route::get('/currentclient/{id}', [HomeController::class, 'getClient'])->name('/currentclient');
 Route::get('mybookings', [BookingController::class, 'index']);
 Route::get('clientbookings', [BookingController::class, 'bookings']);
-Route::get('/currentclient/{id}', [HomeController::class, 'getClient'])->name('/currentclient');
