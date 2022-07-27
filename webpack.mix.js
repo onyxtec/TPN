@@ -90,7 +90,6 @@ mix
 mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
-  .js('resources/customer-resources/js/scripts/pages/*.js', 'public/customer-resources/js/scripts/pages')
   .js('resources/js/app.js', 'public/js').vue()
   // .js('resources/customer-resources/js/app.js', 'public/customer-resources/js').vue()
 
