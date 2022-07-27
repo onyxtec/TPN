@@ -30,12 +30,12 @@ function mixAssetsDir(query, cb) {
 }
 
 
-function mixAssetsDir(query, cb) {
-  ;(glob.sync('resources/customer-resources' + query) || []).forEach(f => {
-    f = f.replace(/[\\\/]+/g, '/')
-    cb(f, f.replace('resources/customer-resources', 'public/customer-resources'))
-  })
-}
+// function mixAssetsDir(query, cb) {
+//   ;(glob.sync('resources/customer-resources' + query) || []).forEach(f => {
+//     f = f.replace(/[\\\/]+/g, '/')
+//     cb(f, f.replace('resources/customer-resources', 'public/customer-resources'))
+//   })
+// }
 
 const sassOptions = {
   precision: 5,
@@ -87,7 +87,7 @@ mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
   .js('resources/js/app.js', 'public/js').vue()
-  .js('resources/customer-resources/js/app.js', 'public/customer-resources/js').vue()
+  // .js('resources/customer-resources/js/app.js', 'public/customer-resources/js').vue()
 
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/core.scss', 'public/css', {sassOptions})

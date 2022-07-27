@@ -1,7 +1,7 @@
 @extends('vuexy/layouts/fullLayoutMaster')
 @section('page-style')
 {{-- Page Css files --}}
-<link rel="stylesheet" href="{{ asset(mix('css/base/pages/page-auth.css')) }}">
+<link rel="stylesheet" href="{{ asset('/css/base/pages/page-auth.css') }}">
 @endsection
 @extends('vuexy.layouts.app')
 @section('content')

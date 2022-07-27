@@ -20,7 +20,7 @@ import en from 'vee-validate/dist/locale/en.json';
 Object.keys(rules).forEach(rule => {
   extend(rule, {
     ...rules[rule], // copies rule configuration
-   
+
   });
   localize('en', en);
 });
@@ -37,7 +37,11 @@ Object.keys(rules).forEach(rule => {
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('admin-login-component', require('./components/AdminLoginComponent.vue').default);
-
+Vue.component('header-component', require('./components/HeaderComponent.vue').default);
+Vue.component('footer-component', require('./components/FooterComponent.vue').default);
+// Vue.component('example-component', require('./customer-resources/js/components/ExampleComponent.vue').default);
+Vue.component('register-component', require('./components/PeerClient/RegisterComponent.vue').default);
+Vue.component('login-component', require('./components/PeerClient/LoginComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -45,5 +49,5 @@ Vue.component('admin-login-component', require('./components/AdminLoginComponent
  */
 
 const app = new Vue({
-    el: '#app',
+  el: '#app',
 });
