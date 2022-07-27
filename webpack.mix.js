@@ -69,7 +69,9 @@ mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest))
 mixAssetsDir('vendors/js/**/*.js', (src, dest) => mix.scripts(src, dest))
 mixAssetsDir('vendors/css/**/*.css', (src, dest) => mix.copy(src, dest))
 mixAssetsDir('vendors/**/**/images', (src, dest) => mix.copy(src, dest))
+
 mixAssetsDir('vendors/css/editors/quill/fonts/', (src, dest) => mix.copy(src, dest))
+
 mixAssetsDir('fonts', (src, dest) => mix.copy(src, dest))
 mixAssetsDir('fonts/**/**/*.css', (src, dest) => mix.copy(src, dest))
 mix.copyDirectory('resources/images', 'public/images')
@@ -77,6 +79,8 @@ mix.copyDirectory('resources/data', 'public/data')
 
 
 mixAssetsDir('customer-resources/**', (src, dest) => mix.copy(src, dest))
+// mix.js('resources/customer-resources/js/scripts/app.js', 'public/js').vue()
+
 mix
 .sass('resources/customer-resources/sass/base/page-headerfooter.scss', 'public/customer-resources/sass/base/', {sassOptions})
 .sass('resources/customer-resources/sass/base/welcome.scss', 'public/customer-resources/sass/base/', {sassOptions})
@@ -86,6 +90,7 @@ mix
 mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
+  .js('resources/customer-resources/js/scripts/pages/*.js', 'public/customer-resources/js/scripts/pages')
   .js('resources/js/app.js', 'public/js').vue()
   // .js('resources/customer-resources/js/app.js', 'public/customer-resources/js').vue()
 

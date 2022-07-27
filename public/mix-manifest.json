@@ -1,6 +1,7 @@
 {
     "/js/core/app-menu.js": "/js/core/app-menu.js",
     "/js/core/app.js": "/js/core/app.js",
+    "/customer-resources/js/scripts/pages/app-user-list.js": "/customer-resources/js/scripts/pages/app-user-list.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/base/plugins/extensions/ext-component-media-player.css": "/css/base/plugins/extensions/ext-component-media-player.css",
