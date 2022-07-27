@@ -42,6 +42,8 @@ Vue.component('footer-component', require('./components/FooterComponent.vue').de
 // Vue.component('example-component', require('./customer-resources/js/components/ExampleComponent.vue').default);
 Vue.component('register-component', require('./components/PeerClient/RegisterComponent.vue').default);
 Vue.component('login-component', require('./components/PeerClient/LoginComponent.vue').default);
+Vue.component('booking-component', require('./components/Client/BookingComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
