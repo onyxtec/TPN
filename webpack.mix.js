@@ -84,6 +84,7 @@ mixAssetsDir('customer-resources/**', (src, dest) => mix.copy(src, dest))
 mix
 .sass('resources/customer-resources/sass/base/page-headerfooter.scss', 'public/customer-resources/sass/base/', {sassOptions})
 .sass('resources/customer-resources/sass/base/welcome.scss', 'public/customer-resources/sass/base/', {sassOptions})
+.sass('resources/customer-resources/sass/base/client.scss', 'public/customer-resources/sass/base/', {sassOptions})
 
 
 

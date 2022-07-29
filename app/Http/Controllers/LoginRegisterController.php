@@ -32,31 +32,38 @@ class LoginRegisterController extends Controller
             'password' => 'required',
         ]);
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('peer')->attempt($credentials)) {
-            if (Auth::guard('peer')->user()->email_verified_at == null) {
-                Auth::guard('peer')->logout();
-                return response()->json([
-                    'message' => "Plz Verify your email to continue",
-                    'status' => 400,
-                    'data' => '',
-                ], 400, []);
-            } else {
-                return response()->json([
-                    'data' => $request,
-                ]);
+        if ($request->value == 1) {
+            if (Auth::guard('peer')->attempt($credentials)) {
+                $data = $request->all();
+                if (Auth::guard('peer')->user()->email_verified_at == null) {
+                    Auth::guard('peer')->logout();
+                    return response()->json([
+                        'message' => "Plz Verify your email to continue",
+                        'status' => 400,
+                        'data' => '',
+                    ], 400, []);
+                } else {
+                    return response()->json([
+                        'data' => $data,
+                    ]);
+                }
             }
-        } elseif (Auth::guard('client')->attempt($credentials)) {
-            if (Auth::guard('client')->user()->email_verified_at == null) {
-                Auth::guard('client')->logout();
-                return response()->json([
-                    'message' => "Plz Verify your email to continue",
-                    'status' => 400,
-                    'data' => '',
-                ], 400, []);
-            } else {
-                return response()->json([
-                    'data' => $request,
-                ]);
+        }
+        if ($request->value == 2) {
+            if (Auth::guard('client')->attempt($credentials)) {
+                $data = $request->all();
+                if (Auth::guard('client')->user()->email_verified_at == null) {
+                    Auth::guard('client')->logout();
+                    return response()->json([
+                        'message' => "Plz Verify your email to continue",
+                        'status' => 400,
+                        'data' => '',
+                    ], 400, []);
+                } else {
+                    return response()->json([
+                        'data' => $data,
+                    ]);
+                }
             }
         }
         return response()->json([
@@ -75,8 +82,8 @@ class LoginRegisterController extends Controller
         $rules = [
             'email' => 'required|email|unique:peers|unique:clients',
         ];
-        $validator = Validator::make($request->all(),$rules);
-        if ($validator->fails()) {    
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
         if ($request->specialization_type != '') {
