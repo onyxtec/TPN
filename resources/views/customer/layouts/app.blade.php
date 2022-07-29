@@ -18,7 +18,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 </head>
-<body>
+<body class="main-body">
     <div id="app">
         <main>
             @yield('content')
